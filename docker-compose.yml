@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  jahitstatus-lp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jahitstatus-landingpage
+    ports:
+      - "3200:80"
+    restart: unless-stopped
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  web:
+    external: true
