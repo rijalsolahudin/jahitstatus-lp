@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contact-form');
   
   // WhatsApp phone number (without + or any special characters)
-  const whatsappNumber = '628123456789'; // Nomor dari halaman kontak (tanpa spasi)
+  const whatsappNumber = '6287777077717'; // Nomor dari halaman kontak (tanpa spasi)
   
   if (contactForm) {
     contactForm.addEventListener('submit', function(event) {
