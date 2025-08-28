@@ -1,5 +1,25 @@
 # Jahit Status - Landing Page
 
+## Teknologi
+
+Proyek ini telah dimigrasi dari HTML statis ke Vite dengan Tailwind CSS untuk pengembangan yang lebih modern dan efisien.
+
+### Menjalankan Proyek
+
+```bash
+# Menginstal dependensi
+npm install
+
+# Menjalankan server pengembangan
+npm run dev
+
+# Build untuk produksi
+npm run build
+
+# Preview build produksi
+npm run preview
+```
+
 ## Fitur Tracking Order
 
 Landing page ini dilengkapi dengan fitur simulasi tracking order yang memungkinkan pelanggan untuk melihat status pesanan mereka secara real-time.

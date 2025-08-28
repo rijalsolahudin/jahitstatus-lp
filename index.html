@@ -28,26 +28,8 @@
     <link rel="icon" href="assets/images/logo-only.ico" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/logo-only.ico" type="image/x-icon">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            DEFAULT: '#2596be',
-                            light: '#3bacda',
-                            dark: '#1a7a9d'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Vite will inject CSS and JS -->
+    <script type="module" src="/src/main.js"></script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,67 +39,14 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- AOS - Animate On Scroll Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Modern Tracking Styles -->
-    <link href="assets/css/tracking-modern.css" rel="stylesheet">
-    
-    <!-- Chat Bubble Styles -->
-    <link href="assets/css/chat-bubble.css" rel="stylesheet">
-    
-    <style>
-        /* Custom Styles */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        .parallax-bg {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #2596be 0%, #1a7a9d 100%);
-        }
-        
-        .text-shadow {
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Progress Bar Styling */
-        .progress-step {
-            position: relative;
-        }
-        
-        .progress-step:last-child::before {
-            display: none;
-        }
-        
-        .progress-step.completed::before {
-            background-color: #2596be;
-        }
-        
-        /* Custom Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-    </style>
+    <!-- Styles akan diimpor melalui Vite -->
 </head>
 <body class="font-sans text-gray-800 bg-gray-50">
     <!-- Header / Navigation -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <img src="assets/images/logo-only.png" alt="JahitStatus Logo" class="h-10">
+                <img src="/src/assets/images/logo-only.png" alt="JahitStatus Logo" class="h-10">
                 <span class="text-xl font-bold text-primary">JahitStatus<span class="text-gray-800">.com</span></span>
             </a>
             
@@ -187,7 +116,7 @@
                 </div>
                 
                 <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
-                    <img src="assets/images/tracking-landscape.png" alt="JahitStatus Tracking Demo" class="max-w-full rounded-lg shadow-xl float-animation">
+                    <img src="/src/assets/images/tracking-landscape.png" alt="JahitStatus Tracking Demo" class="max-w-full rounded-lg shadow-xl float-animation">
                 </div>
             </div>
         </div>
@@ -914,12 +843,7 @@
         });
     </script>
     
-    <!-- Tracking Script -->
-    <script src="assets/js/tracking.js"></script>
-    
     <!-- Animation Effects -->
-    <script src="assets/js/animations.js"></script>
-    <!-- Contact Form Script -->
-    <script src="assets/js/contact.js"></script>
+    <!-- Scripts diimpor melalui Vite -->
 </body>
 </html>

@@ -1,0 +1,397 @@
+/**
+ * Tracking Modern CSS
+ * Stylesheet untuk meningkatkan tampilan tracking dengan efek visual modern dan responsif
+ */
+
+/* Animasi dan Transisi */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); visibility: visible; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes growLine {
+  0% { transform: scaleY(0) translateX(-50%); }
+  100% { transform: scaleY(1) translateX(-50%); }
+}
+
+@keyframes pulseIcon {
+  0% { box-shadow: 0 0 0 0 rgba(66, 153, 225, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(66, 153, 225, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(66, 153, 225, 0); }
+}
+
+/* Efek Hover dan Fokus */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.input-focus-effect:focus {
+  box-shadow: 0 0 0 3px rgba(37, 150, 190, 0.3);
+  border-color: #2596be;
+}
+
+/* Tracking Card Styling */
+.tracking-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-out forwards; /* Pastikan animasi tetap pada keadaan akhir */
+  transition: all 0.3s ease;
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  opacity: 1; /* Pastikan elemen tetap terlihat */
+  visibility: visible; /* Pastikan elemen tetap terlihat */
+}
+
+.tracking-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Search Bar Styling */
+.search-container {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.search-container:hover {
+  transform: translateY(-2px);
+}
+
+.search-input {
+  border-radius: 10px;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  width: 100%;
+  font-size: 0.95rem;
+  animation: fadeIn 0.5s ease-out;
+  backdrop-filter: blur(8px);
+}
+
+.search-input:focus {
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 150, 190, 0.2);
+  border-color: #2596be;
+  transform: scale(1.01);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  transition: all 0.3s ease;
+}
+
+.search-container:focus-within .search-icon {
+  color: #2596be;
+  transform: translateY(-50%) scale(1.1);
+  animation: pulse 1.5s infinite;
+}
+
+.search-button {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+}
+
+.search-button:hover {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+/* Order Info Card */
+.order-info-card {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(229, 231, 235, 0.7);
+  background-color: #ffffff;
+}
+
+.order-info-card:hover {
+  border-color: rgba(37, 150, 190, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.order-id {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  transition: color 0.3s ease;
+}
+
+.order-info-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.order-info-value {
+  font-weight: 500;
+  color: #1f2937;
+  background-color: transparent;
+}
+
+/* Progress Timeline */
+.progress-timeline {
+  position: relative;
+  padding-left: 2.5rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.progress-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.25rem;
+  width: 2px;
+  background: linear-gradient(to bottom, #4299e1, #9ae6b4);
+  z-index: 0;
+  animation: growLine 1.5s ease-out forwards;
+  transform-origin: top center;
+  transform: translateX(-50%);
+}
+
+.progress-step {
+  position: relative;
+  padding-bottom: 1.5rem;
+  animation: fadeIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.progress-step:last-child {
+  padding-bottom: 0;
+}
+
+.step-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1;
+  position: relative;
+  animation: pulseIcon 2s infinite;
+}
+
+.step-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(66, 153, 225, 0.5);
+}
+
+.step-icon.completed {
+  background-color: #10b981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+}
+
+.step-icon.in-progress {
+  background-color: #f59e0b;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+  animation: pulse 2s infinite;
+}
+
+.step-icon.pending {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+}
+
+.step-content {
+  padding-left: 1rem;
+}
+
+.step-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.step-title {
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.step-title.completed {
+  color: #1f2937;
+  background-color: transparent;
+}
+
+.step-title.in-progress {
+  color: #f59e0b;
+  background-color: transparent;
+}
+
+.step-title.pending {
+  color: #9ca3af;
+  background-color: transparent;
+}
+
+/* Notification Box */
+.notification-box {
+  border-radius: 10px;
+  background-color: rgba(219, 234, 254, 0.6);
+  border: 1px solid rgba(191, 219, 254, 0.8);
+  padding: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.notification-box:hover {
+  background-color: rgba(219, 234, 254, 0.8);
+  border-color: rgba(147, 197, 253, 0.8);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.notification-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(66, 153, 225, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.notification-box:hover::after {
+  transform: translateX(100%);
+}
+
+/* Loading Animation */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 4px;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.status-badge::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
+}
+
+.status-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.status-badge-green {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  text-shadow: none;
+}
+
+.status-badge-amber {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  text-shadow: none;
+}
+
+.status-badge-blue {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+  text-shadow: none;
+}
+
+.status-badge-gray {
+  background-color: rgba(107, 114, 128, 0.1);
+  color: #4b5563;
+  text-shadow: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .search-input {
+    padding: 0.625rem 1rem 0.625rem 2.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .search-icon {
+    left: 0.75rem;
+  }
+  
+  .order-id {
+    font-size: 1.125rem;
+  }
+  
+  .step-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .progress-timeline::before {
+    left: 1rem;
+  }
+  
+  .tracking-card {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 8px;
+  }
+  
+  .order-info-card {
+    padding: 1rem;
+  }
+  
+  .progress-step {
+    padding-bottom: 1.25rem;
+  }
+  
+  .step-content {
+    padding-left: 0.75rem;
+  }
+  
+  .notification-box {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+}
