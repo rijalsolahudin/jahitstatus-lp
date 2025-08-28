@@ -4,6 +4,15 @@
 
 Proyek ini telah dimigrasi dari HTML statis ke Vite dengan Tailwind CSS untuk pengembangan yang lebih modern dan efisien.
 
+### Fitur SEO
+
+Proyek ini dilengkapi dengan fitur SEO dasar:
+
+- **robots.txt**: Mengizinkan semua crawler untuk mengindeks situs
+- **sitemap.xml**: Menyediakan peta situs untuk membantu crawler mengindeks konten
+
+Kedua file ini secara otomatis disalin ke folder `dist` saat proses build.
+
 ### Menjalankan Proyek
 
 ```bash
