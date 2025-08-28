@@ -13,6 +13,7 @@ import './assets/css/chat-bubble.css';
 import './assets/js/tracking.js';
 import './assets/js/animations.js';
 import './assets/js/contact.js';
+import './assets/js/mobile-menu.js';
 
 // Inisialisasi AOS dan menangani FOUC
 document.addEventListener('DOMContentLoaded', () => {
