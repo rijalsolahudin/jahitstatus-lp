@@ -44,7 +44,7 @@
         "icon": "clock"
       }
     ],
-    "notification": "Terima kasih telah memesan di RJ Konveksi. Jika ada kendala, hubungi CS: klik di sini"
+    "notification": "Terima kasih telah memesan di Konveksi Anda. Jika ada kendala, hubungi CS: klik di sini"
   },
   {
     "order_id": "ORD/27/08/0002",
@@ -91,7 +91,7 @@
         "icon": "clock"
       }
     ],
-    "notification": "Terima kasih telah memesan di RJ Konveksi. Jika ada kendala, hubungi CS: klik di sini"
+    "notification": "Terima kasih telah memesan di Konveksi Anda. Jika ada kendala, hubungi CS: klik di sini"
   },
   {
     "order_id": "ORD/30/08/0003",
@@ -138,7 +138,7 @@
         "icon": "clock"
       }
     ],
-    "notification": "Terima kasih telah memesan di RJ Konveksi. Jika ada kendala, hubungi CS: klik di sini"
+    "notification": "Terima kasih telah memesan di Konveksi Anda. Jika ada kendala, hubungi CS: klik di sini"
   },
   {
     "order_id": "ORD/02/09/0004",
@@ -232,6 +232,6 @@
         "icon": "clock"
       }
     ],
-    "notification": "Terima kasih telah memesan di RJ Konveksi. Pesanan Anda sedang dalam proses packing."
+    "notification": "Terima kasih telah memesan di Konveksi Anda. Pesanan Anda sedang dalam proses packing."
   }
 ]
