@@ -4,17 +4,28 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Inisialisasi animasi untuk elemen dengan kelas hover-lift
-  initHoverEffects();
+  // Tunggu hingga CSS dimuat sepenuhnya (js-loaded ditambahkan oleh main.js)
+  const checkLoaded = () => {
+    if (document.body.classList.contains('js-loaded')) {
+      // Inisialisasi animasi untuk elemen dengan kelas hover-lift
+      initHoverEffects();
+      
+      // Inisialisasi animasi scroll
+      initScrollAnimations();
+      
+      // Inisialisasi efek parallax
+      initParallaxEffect();
+      
+      // Inisialisasi efek ripple untuk tombol
+      initRippleEffect();
+    } else {
+      // Cek lagi setelah 100ms
+      setTimeout(checkLoaded, 100);
+    }
+  };
   
-  // Inisialisasi animasi scroll
-  initScrollAnimations();
-  
-  // Inisialisasi efek parallax
-  initParallaxEffect();
-  
-  // Inisialisasi efek ripple untuk tombol
-  initRippleEffect();
+  // Mulai pengecekan
+  checkLoaded();
 });
 
 /**

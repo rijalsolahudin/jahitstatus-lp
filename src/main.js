@@ -14,12 +14,17 @@ import './assets/js/tracking.js';
 import './assets/js/animations.js';
 import './assets/js/contact.js';
 
-// Inisialisasi AOS
+// Inisialisasi AOS dan menangani FOUC
 document.addEventListener('DOMContentLoaded', () => {
+  // Inisialisasi AOS
   AOS.init({
     duration: 800,
     easing: 'ease-in-out',
     once: true,
     mirror: false
   });
+  
+  // Menangani FOUC (Flash of Unstyled Content)
+  // Menambahkan kelas js-loaded ke body setelah CSS dimuat
+  document.body.classList.add('js-loaded');
 });

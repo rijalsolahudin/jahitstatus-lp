@@ -2,8 +2,157 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>JahitStatus.com - Sistem Pelacakan Order untuk Industri Konveksi Modern</title>
+    
+    <!-- Critical CSS untuk konten above-the-fold dan mencegah FOUC -->
+    <style>
+        /* Mencegah FOUC dengan menyembunyikan body sampai CSS dimuat */
+        body { opacity: 0; transition: opacity 0.3s ease; }
+        .js-loaded { opacity: 1; }
+        
+        /* Critical CSS untuk konten yang terlihat pertama kali */
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 640px) {
+            html { font-size: 14px; }
+        }
+        
+        @media (max-width: 480px) {
+            html { font-size: 13px; }
+        }
+        
+        /* Container styles */
+        .container {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: clamp(1rem, 5%, 2rem);
+            padding-right: clamp(1rem, 5%, 2rem);
+        }
+        
+        /* Basic layout styles */
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .bg-white { background-color: #ffffff; }
+        .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .sticky { position: sticky; }
+        .top-0 { top: 0; }
+        .z-50 { z-index: 50; }
+        
+        /* Typography */
+        .font-sans { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .text-gray-800 { color: #1f2937; }
+        .bg-gray-50 { background-color: #f9fafb; }
+        
+        /* Gradient background */
+        .gradient-bg { background: linear-gradient(135deg, #2596be 0%, #1a7a9d 100%); }
+        
+        /* Animasi dan efek dari tracking-modern.css */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .input-focus-effect:focus {
+            box-shadow: 0 0 0 3px rgba(37, 150, 190, 0.3);
+            border-color: #2596be;
+        }
+        
+        /* Animasi dasar */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); visibility: visible; }
+        }
+        
+        /* Tambahan untuk header dan navigasi */
+        header {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        /* Pastikan konten utama terlihat dengan baik */
+        .hero-section {
+            animation: fadeIn 0.7s ease forwards;
+        }
+        
+        /* Animasi dan styling untuk chat bubble */
+        @keyframes bubblePop {
+            0% { transform: scale(0.8) rotate(-2deg); opacity: 0; }
+            50% { transform: scale(1.05) rotate(1deg); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+        
+        @keyframes bubbleFloat {
+            0% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-5px) rotate(0.5deg); }
+            100% { transform: translateY(0) rotate(0); }
+        }
+        
+        .chat-bubble {
+            position: relative;
+            animation: 
+                bubblePop 0.5s ease-out forwards, 
+                bubbleFloat 4s ease-in-out infinite 0.5s;
+            transform-origin: bottom left;
+            transition: all 0.3s ease;
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.03), white 15%);
+        }
+        
+        .chat-bubble:hover {
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+    
+    <!-- Preload CSS untuk mengurangi FOUC -->
+    <link rel="preload" href="/src/style.css" as="style">
+    <link rel="preload" href="/src/assets/css/tracking-modern.css" as="style">
+    <link rel="preload" href="/src/assets/css/chat-bubble.css" as="style">
+    
+    <!-- Script untuk menangani FOUC lebih cepat -->
+    <script>
+        // Menambahkan kelas js-loading ke HTML
+        document.documentElement.classList.add('js-loading');
+        
+        // Fungsi untuk mendeteksi ketika stylesheet dimuat
+        function handleStylesLoaded() {
+            // Menambahkan kelas js-loaded ke body
+            document.body.classList.add('js-loaded');
+            document.documentElement.classList.remove('js-loading');
+        }
+        
+        // Mendeteksi ketika stylesheet dimuat
+        if (window.requestAnimationFrame) {
+            // Gunakan requestAnimationFrame untuk memastikan browser telah melakukan rendering
+            window.requestAnimationFrame(function() {
+                window.requestAnimationFrame(function() {
+                    // Pada frame kedua, stylesheet seharusnya sudah dimuat
+                    handleStylesLoaded();
+                });
+            });
+        } else {
+            // Fallback untuk browser yang tidak mendukung requestAnimationFrame
+            window.addEventListener('load', handleStylesLoaded);
+        }
+        
+        // Fallback jika load event tidak terpicu dalam 1.5 detik
+        setTimeout(function() {
+            if (!document.body.classList.contains('js-loaded')) {
+                handleStylesLoaded();
+            }
+        }, 1500);
+    </script>
     
     <!-- Meta Tags untuk SEO -->
     <meta name="description" content="Tingkatkan kepercayaan pelanggan & efisiensi produksi dengan sistem tracking order yang transparan untuk industri konveksi. Pantau status order secara real-time.">
@@ -64,7 +213,7 @@
                 <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Harga</a>
                 <a href="#implementation" class="text-gray-600 hover:text-primary transition-colors">Implementasi</a>
                 <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
-                <a href="#" class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full transition-colors font-medium">Coba Demo</a>
+                <a href="#demo" class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full transition-colors font-medium">Coba Demo</a>
             </nav>
         </div>
         
@@ -87,38 +236,42 @@
             <div class="absolute inset-0 bg-primary-light opacity-10 pattern-dots"></div>
         </div>
         
-        <div class="container mx-auto px-4 py-20 md:py-28 relative z-10">
+        <div class="container mx-auto responsive-padding py-16 sm:py-20 md:py-28 relative z-10">
             <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-shadow">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-shadow leading-tight">
                         <span>Sistem Pelacakan Order untuk Industri Konveksi Modern</span>
                     </h1>
                     
-                    <p class="text-lg md:text-xl text-gray-600 mb-8">
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
                         Tingkatkan kepercayaan pelanggan & efisiensi produksi Anda dengan sistem tracking order yang transparan dan mudah digunakan.
                     </p>
                     
-                    <div class="chat-bubble relative p-5 mb-12 rounded-2xl shadow-lg mr-5" data-aos="zoom-in" data-aos-duration="800">
-                        <p class="text-lg font-bold text-gray-800">"Sudah sampai tahap apa ya order saya?" <span class="text-primary text-sm ml-2">- Pertanyaan yang sering ditanyakan</span></p>
-                        <p class="mt-3 text-gray-600">Dengan <span class="font-semibold text-primary">JahitStatus.com</span>, pelanggan bisa memantau status order secara real-time, sementara Anda fokus menuntaskan produksi tanpa gangguan.</p>
-                        <div class="mt-4 flex items-center text-sm text-gray-500">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Tingkatkan kepuasan pelanggan
-                            <i class="fas fa-check-circle text-green-500 mx-2 ml-4"></i> Kurangi pertanyaan berulang
+                    <div class="chat-bubble relative p-4 sm:p-5 mb-8 sm:mb-12 rounded-xl sm:rounded-2xl shadow-lg mr-0 sm:mr-5" data-aos="zoom-in" data-aos-duration="800">
+                        <p class="text-base sm:text-lg font-bold text-gray-800">"Sudah sampai tahap apa ya order saya?" <span class="text-primary text-xs sm:text-sm ml-1 sm:ml-2 block sm:inline-block mt-1 sm:mt-0">- Pertanyaan yang sering ditanyakan</span></p>
+                        <p class="mt-2 sm:mt-3 text-sm sm:text-base text-gray-600">Dengan <span class="font-semibold text-primary">JahitStatus.com</span>, pelanggan bisa memantau status order secara real-time, sementara Anda fokus menuntaskan produksi tanpa gangguan.</p>
+                        <div class="mt-3 sm:mt-4 flex flex-col sm:flex-row items-start sm:items-center text-xs sm:text-sm text-gray-500">
+                            <div class="flex items-center mb-2 sm:mb-0">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i> Tingkatkan kepuasan pelanggan
+                            </div>
+                            <div class="flex items-center sm:ml-4">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i> Kurangi pertanyaan berulang
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#" class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full transition-colors font-medium text-center flex items-center justify-center">
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="#demo" class="bg-primary hover:bg-primary-dark text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-colors font-medium text-center flex items-center justify-center text-sm sm:text-base">
                             <i class="fas fa-play-circle mr-2"></i> Coba Demo Gratis
                         </a>
-                        <a href="#features" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full transition-colors font-medium text-center flex items-center justify-center">
+                        <a href="#features" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-colors font-medium text-center flex items-center justify-center text-sm sm:text-base">
                             <i class="fas fa-list-check mr-2"></i> Lihat Fitur Lengkap
                         </a>
                     </div>
                 </div>
                 
-                <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
-                    <img src="/src/assets/images/tracking-landscape.webp" alt="JahitStatus Tracking Demo" class="max-w-full rounded-lg shadow-xl float-animation">
+                <div class="w-full md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+                    <img src="/src/assets/images/tracking-landscape.webp" alt="JahitStatus Tracking Demo" class="max-w-full w-full sm:w-auto rounded-lg shadow-xl float-animation responsive-img">
                 </div>
             </div>
         </div>
@@ -126,73 +279,74 @@
 
     
     <!-- Why Choose Us Section -->
-    <section id="features" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Kenapa Harus JahitStatus?</h2>
-                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+    <section id="features" class="py-12 sm:py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto responsive-padding">
+            <div class="text-center mb-10 sm:mb-16" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Kenapa Harus <span class="text-primary">JahitStatus</span>?</h2>
+                <div class="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl sm:max-w-2xl mx-auto">Solusi tracking order yang modern dan profesional untuk bisnis konveksi Anda</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
                 <!-- Feature 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-primary text-4xl mb-4">
-                        <i class="fas fa-search-location"></i>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-primary-light text-white rounded-lg w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-search-location text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Tracking Order Otomatis</h3>
-                    <p class="text-gray-600">Pelanggan cukup memasukkan kode order untuk melihat progres instan.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-center text-gray-800">Tracking Order Otomatis</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center">Pelanggan cukup memasukkan kode order untuk melihat progres instan.</p>
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-primary text-4xl mb-4">
-                        <i class="fas fa-envelope-open-text"></i>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-primary text-white rounded-lg w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-envelope-open-text text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Notifikasi Otomatis via Email</h3>
-                    <p class="text-gray-600">Setiap perubahan status langsung terkirim ke pelanggan.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-center text-gray-800">Notifikasi Otomatis</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center">Setiap perubahan status langsung terkirim ke pelanggan via email.</p>
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-primary text-4xl mb-4">
-                        <i class="fas fa-tachometer-alt"></i>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-primary-dark text-white rounded-lg w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-tachometer-alt text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Dashboard Admin Sederhana</h3>
-                    <p class="text-gray-600">Tim produksi bisa update status dengan cepat, tanpa skill teknis.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-center text-gray-800">Dashboard Admin</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center">Tim produksi bisa update status dengan cepat, tanpa skill teknis.</p>
                 </div>
                 
                 <!-- Feature 4 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-primary text-4xl mb-4">
-                        <i class="fas fa-paint-brush"></i>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-primary-light text-white rounded-lg w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-paint-brush text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Tampilan Profesional</h3>
-                    <p class="text-gray-600">Bisa dikustomisasi dengan logo & warna brand Anda.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-center text-gray-800">Tampilan Profesional</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center">Bisa dikustomisasi dengan logo & warna brand Anda.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Main Features Section -->
-    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="inline-block px-3 py-1 bg-primary-light bg-opacity-20 text-primary rounded-full text-sm font-semibold mb-3">FITUR UNGGULAN</span>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-shadow">Fitur Utama</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-primary-dark mx-auto mb-6 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Solusi lengkap untuk manajemen dan pelacakan order konveksi Anda</p>
+    <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="container mx-auto responsive-padding">
+            <div class="text-center mb-10 sm:mb-16" data-aos="fade-up">
+                <span class="inline-block px-2 sm:px-3 py-1 bg-primary-light bg-opacity-20 text-primary rounded-full text-xs sm:text-sm font-semibold mb-2 sm:mb-3">FITUR UNGGULAN</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-shadow">Fitur Utama</h2>
+                <div class="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary to-primary-dark mx-auto mb-4 sm:mb-6 rounded-full"></div>
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl sm:max-w-2xl mx-auto">Solusi lengkap untuk manajemen dan pelacakan order konveksi Anda</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 <!-- Feature 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
-                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
-                        <i class="fas fa-fingerprint text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md">
+                        <i class="fas fa-fingerprint text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Kode Order Unik</h3>
-                    <p class="text-gray-600">Pantau status tiap pesanan dengan satu kode. Sistem menghasilkan kode unik untuk setiap order yang masuk, memudahkan pelacakan dan referensi.</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <span class="text-primary font-medium flex items-center">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Kode Order Unik Otomatis</h3>
+                    <p class="text-sm sm:text-base text-gray-600">Pantau status tiap pesanan dengan satu kode. Sistem otomatis menghasilkan kode unik untuk setiap order yang masuk, memudahkan pelacakan dan referensi.</p>
+                    <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center text-sm sm:text-base">
                             <span>Mudah diingat</span>
                             <i class="fas fa-check-circle ml-2"></i>
                         </span>
@@ -200,14 +354,14 @@
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
-                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
-                        <i class="fas fa-chart-line text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md">
+                        <i class="fas fa-chart-line text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Progress Tracking</h3>
-                    <p class="text-gray-600">Dari Order Masuk → Belanja Bahan → Potong → Jahit → QC → Packing → Dikirim → Selesai. Pantau setiap tahapan produksi dengan detail.</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <span class="text-primary font-medium flex items-center">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Progress Tracking</h3>
+                    <p class="text-sm sm:text-base text-gray-600">Dari Order Masuk → Belanja Bahan → Potong → Jahit → QC → Packing → Dikirim → Selesai. Pantau setiap tahapan produksi dengan detail.</p>
+                    <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center text-sm sm:text-base">
                             <span>Real-time updates</span>
                             <i class="fas fa-check-circle ml-2"></i>
                         </span>
@@ -215,14 +369,14 @@
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
-                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
-                        <i class="fas fa-palette text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md">
+                        <i class="fas fa-palette text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Branding Custom</h3>
-                    <p class="text-gray-600">Gunakan sistem dengan identitas brand Anda sendiri. Sesuaikan logo, warna, dan tampilan untuk mencerminkan identitas bisnis Anda.</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <span class="text-primary font-medium flex items-center">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Branding Custom</h3>
+                    <p class="text-sm sm:text-base text-gray-600">Gunakan sistem dengan identitas brand Anda sendiri. Saat ini tersedia kustomisasi <span class="font-medium">nama</span> dan <span class="font-medium">domain</span>. Fitur kustomisasi <span class="text-gray-500 italic">warna, logo, dan email</span> sedang dalam tahap pengembangan.</p>
+                    <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center text-sm sm:text-base">
                             <span>White-label solution</span>
                             <i class="fas fa-check-circle ml-2"></i>
                         </span>
@@ -230,14 +384,15 @@
                 </div>
                 
                 <!-- Feature 4 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
-                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
-                        <i class="fas fa-chart-pie text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md">
+                        <i class="fas fa-chart-pie text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Laporan Produksi</h3>
-                    <p class="text-gray-600">Pantau data produksi harian, mingguan, dan riwayat order kapan saja. Dapatkan insight berharga untuk pengambilan keputusan bisnis.</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <span class="text-primary font-medium flex items-center">
+                    <div class="absolute top-2 sm:top-4 -right-1 bg-yellow-400 text-yellow-900 text-xs font-bold py-1 px-2 rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg shadow-md z-10">Coming Soon</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Laporan Produksi</h3>
+                    <p class="text-sm sm:text-base text-gray-600">Pantau data produksi harian, mingguan, dan riwayat order kapan saja. Dapatkan insight berharga untuk pengambilan keputusan bisnis.</p>
+                    <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center text-sm sm:text-base">
                             <span>Analisis mendalam</span>
                             <i class="fas fa-check-circle ml-2"></i>
                         </span>
@@ -245,14 +400,14 @@
                 </div>
                 
                 <!-- Feature 5 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="500">
-                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
-                        <i class="fas fa-calculator text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md">
+                        <i class="fas fa-calculator text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Kalkulator HPP</h3>
-                    <p class="text-gray-600">Hitung biaya produksi secara otomatis (bahan, tenaga kerja, overhead) untuk membantu menentukan harga jual dengan lebih akurat.</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <span class="text-primary font-medium flex items-center">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Kalkulator HPP</h3>
+                    <p class="text-sm sm:text-base text-gray-600">Hitung biaya produksi secara otomatis (bahan, tenaga kerja, overhead) untuk membantu menentukan harga jual dengan lebih akurat.</p>
+                    <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center text-sm sm:text-base">
                             <span>Harga jual optimal</span>
                             <i class="fas fa-check-circle ml-2"></i>
                         </span>
@@ -260,23 +415,41 @@
                 </div>
                 
                 <!-- Feature 6 (New) -->
-                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="600">
-                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
-                        <i class="fas fa-bell text-2xl"></i>
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md">
+                        <i class="fas fa-bell text-lg sm:text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Notifikasi Status</h3>
-                    <p class="text-gray-600">Kirim update otomatis ke pelanggan saat status pesanan berubah. Tingkatkan kepercayaan dengan transparansi proses produksi.</p>
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <span class="text-primary font-medium flex items-center">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Notifikasi Status</h3>
+                    <p class="text-sm sm:text-base text-gray-600">Kirim update otomatis ke pelanggan saat status pesanan berubah. Tingkatkan kepercayaan dengan transparansi proses produksi.</p>
+                    <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center text-sm sm:text-base">
                             <span>WhatsApp & Email</span>
+                            <i class="fas fa-check-circle ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Feature 7 (Coming Soon) -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="700">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md">
+                        <i class="fas fa-calendar-alt text-lg sm:text-2xl"></i>
+                    </div>
+                    <div class="absolute top-2 sm:top-4 -right-1 bg-yellow-400 text-yellow-900 text-xs font-bold py-1 px-2 rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg shadow-md z-10">Coming Soon</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+                        Schedule Produksi
+                    </h3>
+                    <p class="text-sm sm:text-base text-gray-600">Pantau dan update produksi dengan tampilan interaktif kanban board. Kelola jadwal produksi dengan lebih efisien dan visual.</p>
+                    <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center text-sm sm:text-base">
+                            <span>Kanban Board</span>
                             <i class="fas fa-check-circle ml-2"></i>
                         </span>
                     </div>
                 </div>
             </div>
             
-            <div class="text-center mt-12">
-                <a href="#demo" class="inline-block px-8 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg shadow-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
+            <div class="text-center mt-8 sm:mt-12">
+                <a href="#demo" class="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-primary hover:bg-primary-dark text-white text-sm sm:text-base font-semibold rounded-lg shadow-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
                     <i class="fas fa-eye mr-2"></i> Lihat Demo
                 </a>
             </div>
@@ -284,45 +457,43 @@
     </section>
 
     <!-- Demo Section with Tracking Image Style -->
-    <section id="demo" class="py-20" style="background-color: #f8fafc;">
-        <div class="py-16">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Simulasi Tracking</h2>
-                    <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
-                    <p class="text-gray-600 max-w-2xl mx-auto">Tampilan tracking order yang profesional dan mudah dipahami oleh pelanggan Anda</p>
+    <section id="demo" class="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-primary-light/5 to-primary/10">
+        <div class="py-8 sm:py-12 md:py-16">
+            <div class="container mx-auto responsive-padding">
+                <div class="text-center mb-8 sm:mb-12" data-aos="fade-up">
+                    <span class="inline-block px-2 sm:px-3 py-1 bg-primary bg-opacity-10 text-primary-dark rounded-full text-xs sm:text-sm font-semibold mb-2 sm:mb-3">DEMO INTERAKTIF</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-gray-800">Simulasi Tracking</h2>
+                    <div class="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
+                    <p class="text-sm sm:text-base text-gray-600 max-w-xl sm:max-w-2xl mx-auto">Tampilan tracking order yang profesional dan mudah dipahami oleh pelanggan Anda</p>
                 </div>
                 
                 <!-- Tracking Card - Dynamic with JavaScript -->
                 <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in" style="border: 1px solid #e2e8f0;">
                     <!-- Search Bar -->
-                    <div class="p-4 bg-gray-50 border-b border-gray-200">
+                    <div class="p-3 sm:p-4 bg-gray-50 border-b border-gray-200">
                         <form id="search-form" class="flex items-center justify-between">
                             <div class="w-full relative">
-                                <input id="search-input" type="text" placeholder="Masukkan ID Order" class="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <input id="search-input" type="text" placeholder="Masukkan ID Order" class="w-full pl-3 sm:pl-4 pr-8 sm:pr-10 py-1.5 sm:py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:pr-3 pointer-events-none">
+                                    <svg class="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                                     </svg>
                                 </div>
                             </div>
-                            <button type="submit" class="ml-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 hidden md:block">
-                                Search
-                            </button>
                         </form>
                     </div>
                     
                     <!-- Dynamic Content Container -->
                     <div id="tracking-container">
                         <!-- Content will be loaded dynamically by JavaScript -->
-                        <div class="p-6 bg-gray-50 text-center">
+                        <div class="p-4 sm:p-6 bg-gray-50 text-center">
                             <div class="animate-pulse">
-                                <div class="h-6 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
-                                <div class="h-4 bg-gray-200 rounded w-1/2 mx-auto mb-2"></div>
-                                <div class="h-4 bg-gray-200 rounded w-2/3 mx-auto mb-6"></div>
+                                <div class="h-5 sm:h-6 bg-gray-200 rounded w-3/4 mx-auto mb-3 sm:mb-4"></div>
+                                <div class="h-3 sm:h-4 bg-gray-200 rounded w-1/2 mx-auto mb-2"></div>
+                                <div class="h-3 sm:h-4 bg-gray-200 rounded w-2/3 mx-auto mb-4 sm:mb-6"></div>
                                 
-                                <div class="space-y-3">
-                                    <div class="h-4 bg-gray-200 rounded w-full"></div>
+                                <div class="space-y-2 sm:space-y-3">
+                                    <div class="h-3 sm:h-4 bg-gray-200 rounded w-full"></div>
                                     <div class="h-4 bg-gray-200 rounded w-full"></div>
                                     <div class="h-4 bg-gray-200 rounded w-3/4"></div>
                                 </div>
@@ -367,7 +538,7 @@
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                <span>Dashboard admin & laporan produksi</span>
+                                <span>Dashboard admin</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
@@ -408,7 +579,7 @@
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                <span>Dashboard admin & laporan produksi</span>
+                                <span>Dashboard admin</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
@@ -454,7 +625,7 @@
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                <span>Dashboard admin & laporan produksi</span>
+                                <span>Dashboard admin</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
@@ -463,10 +634,6 @@
                             <li class="flex items-start">
                                 <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
                                 <span>Hemat hingga Rp 39.000.000 (10 tahun)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                <span>Bonus: Setup awal, training tim & support teknis 1 tahun</span>
                             </li>
                         </ul>
                     </div>
@@ -672,8 +839,8 @@
                     
                     <div class="space-y-6">
                         <div class="flex items-start">
-                            <div class="flex-shrink-0 bg-primary-light rounded-full p-3 text-primary">
-                                <i class="fas fa-map-marker-alt"></i>
+                            <div class="flex-shrink-0 bg-primary-light rounded-full w-10 h-10 flex items-center justify-center text-white">
+                                <i class="fas fa-map-marker-alt text-base"></i>
                             </div>
                             <div class="ml-4">
                                 <h4 class="font-semibold">Kantor Pusat</h4>
@@ -682,8 +849,8 @@
                         </div>
                         
                         <div class="flex items-start">
-                            <div class="flex-shrink-0 bg-primary-light rounded-full p-3 text-primary">
-                                <i class="fas fa-envelope"></i>
+                            <div class="flex-shrink-0 bg-primary-light rounded-full w-10 h-10 flex items-center justify-center text-white">
+                                <i class="fas fa-envelope text-base"></i>
                             </div>
                             <div class="ml-4">
                                 <h4 class="font-semibold">Email</h4>
@@ -692,8 +859,8 @@
                         </div>
                         
                         <div class="flex items-start">
-                            <div class="flex-shrink-0 bg-primary-light rounded-full p-3 text-primary">
-                                <i class="fas fa-phone-alt"></i>
+                            <div class="flex-shrink-0 bg-primary-light rounded-full w-10 h-10 flex items-center justify-center text-white">
+                                <i class="fas fa-phone-alt text-base"></i>
                             </div>
                             <div class="ml-4">
                                 <h4 class="font-semibold">Telepon</h4>
@@ -711,14 +878,14 @@
                     <div class="mt-8">
                         <h4 class="font-semibold mb-4">Ikuti Kami</h4>
                         <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
-                                <i class="fab fa-instagram"></i>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-instagram text-base"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
-                                <i class="fab fa-linkedin-in"></i>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-linkedin-in text-base"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
-                                <i class="fab fa-whatsapp"></i>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-whatsapp text-base"></i>
                             </a>
                         </div>
                     </div>
@@ -737,13 +904,13 @@
                     <p class="text-gray-400 mb-4">Solusi Digital untuk Konveksi Modern</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-instagram text-base"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
+                            <i class="fab fa-linkedin-in text-base"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-whatsapp"></i>
+                            <i class="fab fa-whatsapp text-base"></i>
                         </a>
                     </div>
                 </div>
@@ -777,7 +944,7 @@
                     <form class="flex">
                         <input type="email" placeholder="Email Anda" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
                         <button type="submit" class="bg-primary hover:bg-primary-dark px-4 py-2 rounded-r-lg transition-colors">
-                            <i class="fas fa-paper-plane"></i>
+                            <i class="fas fa-paper-plane text-base"></i>
                         </button>
                     </form>
                 </div>
@@ -791,7 +958,7 @@
 
     <!-- Back to Top Button -->
     <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
-        <i class="fas fa-chevron-up"></i>
+        <i class="fas fa-chevron-up text-base"></i>
     </button>
 
     <!-- AOS Script -->

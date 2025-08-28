@@ -37,14 +37,13 @@
     bubbleGlow 5s ease-in-out infinite 1s;
   transform-origin: bottom left;
   transition: all 0.3s ease;
-  border-left: 4px solid #3B82F6;
   background: linear-gradient(to right, rgba(59, 130, 246, 0.03), white 15%);
 }
 
 .chat-bubble:hover {
   transform: scale(1.02) translateY(-3px);
   box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
-  border-left-width: 6px;
+  /* border-left-width: 6px; */
 }
 
 /* Menggunakan pseudo-element untuk ekor chat bubble */
@@ -59,7 +58,6 @@
   transform: rotate(45deg);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   z-index: -1;
-  border-left: 1px solid rgba(59, 130, 246, 0.3);
   border-bottom: 1px solid rgba(59, 130, 246, 0.3);
 }
 
