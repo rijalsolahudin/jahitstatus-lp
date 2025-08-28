@@ -1,0 +1,237 @@
+[
+  {
+    "order_id": "ORD/25/08/0001",
+    "customer": "Amar",
+    "order_date": "08 Agustus 2025",
+    "estimated_completion": "30 Agustus 2025",
+    "current_status": "Jahit",
+    "status_color": "amber-500",
+    "progress": [
+      {
+        "step": "Belanja Bahan",
+        "date": "08 Agustus 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Potong",
+        "date": "08 Agustus 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Jahit",
+        "date": "11 Agustus 2025",
+        "status": "in_progress",
+        "icon": "clock"
+      },
+      {
+        "step": "Finishing",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      },
+      {
+        "step": "Packing",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      },
+      {
+        "step": "Selesai",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      }
+    ],
+    "notification": "Terima kasih telah memesan di RJ Konveksi. Jika ada kendala, hubungi CS: klik di sini"
+  },
+  {
+    "order_id": "ORD/27/08/0002",
+    "customer": "Budi",
+    "order_date": "10 Agustus 2025",
+    "estimated_completion": "05 September 2025",
+    "current_status": "Potong",
+    "status_color": "green-500",
+    "progress": [
+      {
+        "step": "Belanja Bahan",
+        "date": "12 Agustus 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Potong",
+        "date": "15 Agustus 2025",
+        "status": "in_progress",
+        "icon": "clock"
+      },
+      {
+        "step": "Jahit",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      },
+      {
+        "step": "Finishing",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      },
+      {
+        "step": "Packing",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      },
+      {
+        "step": "Selesai",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      }
+    ],
+    "notification": "Terima kasih telah memesan di RJ Konveksi. Jika ada kendala, hubungi CS: klik di sini"
+  },
+  {
+    "order_id": "ORD/30/08/0003",
+    "customer": "Citra",
+    "order_date": "15 Agustus 2025",
+    "estimated_completion": "10 September 2025",
+    "current_status": "Belanja Bahan",
+    "status_color": "blue-500",
+    "progress": [
+      {
+        "step": "Belanja Bahan",
+        "date": "17 Agustus 2025",
+        "status": "in_progress",
+        "icon": "clock"
+      },
+      {
+        "step": "Potong",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      },
+      {
+        "step": "Jahit",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      },
+      {
+        "step": "Finishing",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      },
+      {
+        "step": "Packing",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      },
+      {
+        "step": "Selesai",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      }
+    ],
+    "notification": "Terima kasih telah memesan di RJ Konveksi. Jika ada kendala, hubungi CS: klik di sini"
+  },
+  {
+    "order_id": "ORD/02/09/0004",
+    "customer": "Dian",
+    "order_date": "20 Agustus 2025",
+    "estimated_completion": "15 September 2025",
+    "current_status": "Selesai",
+    "status_color": "green-500",
+    "progress": [
+      {
+        "step": "Belanja Bahan",
+        "date": "22 Agustus 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Potong",
+        "date": "25 Agustus 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Jahit",
+        "date": "28 Agustus 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Finishing",
+        "date": "01 September 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Packing",
+        "date": "03 September 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Selesai",
+        "date": "05 September 2025",
+        "status": "completed",
+        "icon": "check"
+      }
+    ],
+    "notification": "Terima kasih telah memesan di Konveksi Anda. Pesanan Anda telah selesai dan dikirim."
+  },
+  {
+    "order_id": "ORD/05/09/0005",
+    "customer": "Eko",
+    "order_date": "25 Agustus 2025",
+    "estimated_completion": "20 September 2025",
+    "current_status": "Packing",
+    "status_color": "purple-500",
+    "progress": [
+      {
+        "step": "Belanja Bahan",
+        "date": "27 Agustus 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Potong",
+        "date": "30 Agustus 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Jahit",
+        "date": "02 September 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Finishing",
+        "date": "05 September 2025",
+        "status": "completed",
+        "icon": "check"
+      },
+      {
+        "step": "Packing",
+        "date": "07 September 2025",
+        "status": "in_progress",
+        "icon": "clock"
+      },
+      {
+        "step": "Selesai",
+        "date": null,
+        "status": "pending",
+        "icon": "clock"
+      }
+    ],
+    "notification": "Terima kasih telah memesan di RJ Konveksi. Pesanan Anda sedang dalam proses packing."
+  }
+]

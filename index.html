@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JahitStatus.com - Sistem Pelacakan Order untuk Industri Konveksi Modern</title>
+    
+    <!-- Meta Tags untuk SEO -->
+    <meta name="description" content="Tingkatkan kepercayaan pelanggan & efisiensi produksi dengan sistem tracking order yang transparan untuk industri konveksi. Pantau status order secara real-time.">
+    <meta name="keywords" content="tracking order konveksi, sistem pelacakan jahit, status produksi konveksi, jahit status, manajemen konveksi">
+    <meta name="author" content="JahitStatus.com">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jahitstatus.com/">
+    <meta property="og:title" content="JahitStatus.com - Sistem Pelacakan Order untuk Industri Konveksi Modern">
+    <meta property="og:description" content="Tingkatkan kepercayaan pelanggan & efisiensi produksi dengan sistem tracking order yang transparan untuk industri konveksi.">
+    <meta property="og:image" content="https://jahitstatus.com/assets/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jahitstatus.com/">
+    <meta property="twitter:title" content="JahitStatus.com - Sistem Pelacakan Order untuk Industri Konveksi Modern">
+    <meta property="twitter:description" content="Tingkatkan kepercayaan pelanggan & efisiensi produksi dengan sistem tracking order yang transparan untuk industri konveksi.">
+    <meta property="twitter:image" content="https://jahitstatus.com/assets/images/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo-only.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/logo-only.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#2596be',
+                            light: '#3bacda',
+                            dark: '#1a7a9d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS - Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Modern Tracking Styles -->
+    <link href="assets/css/tracking-modern.css" rel="stylesheet">
+    
+    <!-- Chat Bubble Styles -->
+    <link href="assets/css/chat-bubble.css" rel="stylesheet">
+    
+    <style>
+        /* Custom Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #2596be 0%, #1a7a9d 100%);
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Progress Bar Styling */
+        .progress-step {
+            position: relative;
+        }
+        
+        .progress-step:last-child::before {
+            display: none;
+        }
+        
+        .progress-step.completed::before {
+            background-color: #2596be;
+        }
+        
+        /* Custom Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="assets/images/logo-only.png" alt="JahitStatus Logo" class="h-10">
+                <span class="text-xl font-bold text-primary">JahitStatus<span class="text-gray-800">.com</span></span>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-500 hover:text-primary focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="text-gray-600 hover:text-primary transition-colors">Fitur</a>
+                <a href="#demo" class="text-gray-600 hover:text-primary transition-colors">Demo</a>
+                <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Harga</a>
+                <a href="#implementation" class="text-gray-600 hover:text-primary transition-colors">Implementasi</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
+                <a href="#" class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full transition-colors font-medium">Coba Demo</a>
+            </nav>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="hidden bg-white md:hidden">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#features" class="text-gray-600 hover:text-primary transition-colors">Fitur</a>
+                <a href="#demo" class="text-gray-600 hover:text-primary transition-colors">Demo</a>
+                <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Harga</a>
+                <a href="#implementation" class="text-gray-600 hover:text-primary transition-colors">Implementasi</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
+                <a href="#" class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full transition-colors font-medium text-center">Coba Demo</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-white">
+        <div class="absolute inset-0 z-0 opacity-5">
+            <div class="absolute inset-0 bg-primary-light opacity-10 pattern-dots"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 py-20 md:py-28 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-shadow">
+                        <span>Sistem Pelacakan Order untuk Industri Konveksi Modern</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-gray-600 mb-8">
+                        Tingkatkan kepercayaan pelanggan & efisiensi produksi Anda dengan sistem tracking order yang transparan dan mudah digunakan.
+                    </p>
+                    
+                    <div class="chat-bubble relative p-5 mb-12 rounded-2xl shadow-lg mr-5" data-aos="zoom-in" data-aos-duration="800">
+                        <p class="text-lg font-bold text-gray-800">"Sudah sampai tahap apa ya order saya?" <span class="text-primary text-sm ml-2">- Pertanyaan yang sering ditanyakan</span></p>
+                        <p class="mt-3 text-gray-600">Dengan <span class="font-semibold text-primary">JahitStatus.com</span>, pelanggan bisa memantau status order secara real-time, sementara Anda fokus menuntaskan produksi tanpa gangguan.</p>
+                        <div class="mt-4 flex items-center text-sm text-gray-500">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Tingkatkan kepuasan pelanggan
+                            <i class="fas fa-check-circle text-green-500 mx-2 ml-4"></i> Kurangi pertanyaan berulang
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#" class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full transition-colors font-medium text-center flex items-center justify-center">
+                            <i class="fas fa-play-circle mr-2"></i> Coba Demo Gratis
+                        </a>
+                        <a href="#features" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full transition-colors font-medium text-center flex items-center justify-center">
+                            <i class="fas fa-list-check mr-2"></i> Lihat Fitur Lengkap
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+                    <img src="assets/images/tracking-landscape.png" alt="JahitStatus Tracking Demo" class="max-w-full rounded-lg shadow-xl float-animation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Why Choose Us Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Kenapa Harus JahitStatus?</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Tracking Order Otomatis</h3>
+                    <p class="text-gray-600">Pelanggan cukup memasukkan kode order untuk melihat progres instan.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Notifikasi Otomatis via Email</h3>
+                    <p class="text-gray-600">Setiap perubahan status langsung terkirim ke pelanggan.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Dashboard Admin Sederhana</h3>
+                    <p class="text-gray-600">Tim produksi bisa update status dengan cepat, tanpa skill teknis.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Tampilan Profesional</h3>
+                    <p class="text-gray-600">Bisa dikustomisasi dengan logo & warna brand Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Features Section -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="inline-block px-3 py-1 bg-primary-light bg-opacity-20 text-primary rounded-full text-sm font-semibold mb-3">FITUR UNGGULAN</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-shadow">Fitur Utama</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-primary-dark mx-auto mb-6 rounded-full"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Solusi lengkap untuk manajemen dan pelacakan order konveksi Anda</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
+                        <i class="fas fa-fingerprint text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Kode Order Unik</h3>
+                    <p class="text-gray-600">Pantau status tiap pesanan dengan satu kode. Sistem menghasilkan kode unik untuk setiap order yang masuk, memudahkan pelacakan dan referensi.</p>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center">
+                            <span>Mudah diingat</span>
+                            <i class="fas fa-check-circle ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Progress Tracking</h3>
+                    <p class="text-gray-600">Dari Order Masuk → Belanja Bahan → Potong → Jahit → QC → Packing → Dikirim → Selesai. Pantau setiap tahapan produksi dengan detail.</p>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center">
+                            <span>Real-time updates</span>
+                            <i class="fas fa-check-circle ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
+                        <i class="fas fa-palette text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Branding Custom</h3>
+                    <p class="text-gray-600">Gunakan sistem dengan identitas brand Anda sendiri. Sesuaikan logo, warna, dan tampilan untuk mencerminkan identitas bisnis Anda.</p>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center">
+                            <span>White-label solution</span>
+                            <i class="fas fa-check-circle ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
+                        <i class="fas fa-chart-pie text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Laporan Produksi</h3>
+                    <p class="text-gray-600">Pantau data produksi harian, mingguan, dan riwayat order kapan saja. Dapatkan insight berharga untuk pengambilan keputusan bisnis.</p>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center">
+                            <span>Analisis mendalam</span>
+                            <i class="fas fa-check-circle ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
+                        <i class="fas fa-calculator text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Kalkulator HPP</h3>
+                    <p class="text-gray-600">Hitung biaya produksi secara otomatis (bahan, tenaga kerja, overhead) untuk membantu menentukan harga jual dengan lebih akurat.</p>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center">
+                            <span>Harga jual optimal</span>
+                            <i class="fas fa-check-circle ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Feature 6 (New) -->
+                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bg-gradient-to-br from-primary to-primary-dark w-14 h-14 rounded-lg flex items-center justify-center mb-5 text-white shadow-md">
+                        <i class="fas fa-bell text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Notifikasi Status</h3>
+                    <p class="text-gray-600">Kirim update otomatis ke pelanggan saat status pesanan berubah. Tingkatkan kepercayaan dengan transparansi proses produksi.</p>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <span class="text-primary font-medium flex items-center">
+                            <span>WhatsApp & Email</span>
+                            <i class="fas fa-check-circle ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#demo" class="inline-block px-8 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg shadow-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
+                    <i class="fas fa-eye mr-2"></i> Lihat Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section with Tracking Image Style -->
+    <section id="demo" class="py-20" style="background-color: #f8fafc;">
+        <div class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Simulasi Tracking</h2>
+                    <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Tampilan tracking order yang profesional dan mudah dipahami oleh pelanggan Anda</p>
+                </div>
+                
+                <!-- Tracking Card - Dynamic with JavaScript -->
+                <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in" style="border: 1px solid #e2e8f0;">
+                    <!-- Search Bar -->
+                    <div class="p-4 bg-gray-50 border-b border-gray-200">
+                        <form id="search-form" class="flex items-center justify-between">
+                            <div class="w-full relative">
+                                <input id="search-input" type="text" placeholder="Masukkan ID Order" class="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <button type="submit" class="ml-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 hidden md:block">
+                                Search
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Dynamic Content Container -->
+                    <div id="tracking-container">
+                        <!-- Content will be loaded dynamically by JavaScript -->
+                        <div class="p-6 bg-gray-50 text-center">
+                            <div class="animate-pulse">
+                                <div class="h-6 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
+                                <div class="h-4 bg-gray-200 rounded w-1/2 mx-auto mb-2"></div>
+                                <div class="h-4 bg-gray-200 rounded w-2/3 mx-auto mb-6"></div>
+                                
+                                <div class="space-y-3">
+                                    <div class="h-4 bg-gray-200 rounded w-full"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-full"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-gray-500">Loading tracking data...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Paket Berlangganan</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-6 border-b">
+                        <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                        <div class="text-primary text-3xl font-bold mb-2">Rp 499.000<span class="text-gray-500 text-lg font-normal"> / bulan</span></div>
+                        <p class="text-gray-600">Pembayaran fleksibel per bulan</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Semua fitur JahitStatus</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Tracking order real-time & notifikasi email</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Dashboard admin & laporan produksi</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Kalkulator HPP</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Cocok untuk memulai</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-gray-50">
+                        <a href="#contact" class="block w-full py-3 px-4 text-center bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-colors">
+                            Mulai Sekarang
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Pro Plan (Popular) -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform scale-105 hover:shadow-xl transition-all relative" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 rounded-bl-lg font-semibold text-sm">
+                        POPULER
+                    </div>
+                    <div class="p-6 border-b">
+                        <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                        <div class="text-primary text-3xl font-bold mb-2">Rp 4.990.000<span class="text-gray-500 text-lg font-normal"> / tahun</span></div>
+                        <p class="text-gray-600">Hemat ±17% dibanding bayar bulanan</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Semua fitur JahitStatus</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Tracking order real-time & notifikasi email</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Dashboard admin & laporan produksi</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Kalkulator HPP</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Akses penuh 12 bulan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Lebih hemat ± Rp 1.000.000</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Pilihan populer untuk konveksi menengah</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-gray-50">
+                        <a href="#contact" class="block w-full py-3 px-4 text-center bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-colors">
+                            Pilih Paket Pro
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Lifetime Plan -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6 border-b">
+                        <h3 class="text-2xl font-bold mb-2">Lifetime</h3>
+                        <div class="text-primary text-3xl font-bold mb-2">Rp 20.000.000<span class="text-gray-500 text-lg font-normal"> (Beli Putus)</span></div>
+                        <p class="text-gray-600">Bayar sekali, pakai selamanya</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Semua fitur JahitStatus</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Tracking order real-time & notifikasi email</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Dashboard admin & laporan produksi</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Kalkulator HPP</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Hemat hingga Rp 39.000.000 (10 tahun)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Bonus: Setup awal, training tim & support teknis 1 tahun</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-gray-50">
+                        <a href="#contact" class="block w-full py-3 px-4 text-center bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-colors">
+                            Pilih Lifetime
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Steps -->
+    <section id="implementation" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Cara Implementasi</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-8 top-0 bottom-0 w-1 bg-primary-light hidden md:block"></div>
+                    
+                    <!-- Step 1 -->
+                    <div class="flex flex-col md:flex-row mb-12" data-aos="fade-right">
+                        <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white text-2xl font-bold mb-4 md:mb-0 z-10">
+                            1
+                        </div>
+                        <div class="md:ml-8">
+                            <h3 class="text-xl font-bold mb-2">Konsultasi Sistem Produksi Anda</h3>
+                            <p class="text-gray-600">Kami akan mempelajari alur produksi konveksi Anda untuk memastikan sistem kami dapat disesuaikan dengan kebutuhan spesifik bisnis Anda.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="flex flex-col md:flex-row mb-12" data-aos="fade-right" data-aos-delay="100">
+                        <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white text-2xl font-bold mb-4 md:mb-0 z-10">
+                            2
+                        </div>
+                        <div class="md:ml-8">
+                            <h3 class="text-xl font-bold mb-2">Setup & Kustomisasi Sistem</h3>
+                            <p class="text-gray-600">Tim teknis kami akan mengatur sistem sesuai dengan kebutuhan Anda, termasuk kustomisasi branding, tahapan produksi, dan integrasi dengan sistem yang sudah ada.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex flex-col md:flex-row mb-12" data-aos="fade-right" data-aos-delay="200">
+                        <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white text-2xl font-bold mb-4 md:mb-0 z-10">
+                            3
+                        </div>
+                        <div class="md:ml-8">
+                            <h3 class="text-xl font-bold mb-2">Training Tim & Simulasi Tracking</h3>
+                            <p class="text-gray-600">Kami akan melatih tim Anda untuk menggunakan dashboard admin dan melakukan simulasi tracking order untuk memastikan semua berjalan lancar.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="flex flex-col md:flex-row" data-aos="fade-right" data-aos-delay="300">
+                        <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white text-2xl font-bold mb-4 md:mb-0 z-10">
+                            4
+                        </div>
+                        <div class="md:ml-8">
+                            <h3 class="text-xl font-bold mb-2">Go-Live & Mulai Dipakai</h3>
+                            <p class="text-gray-600">Sistem siap digunakan! Kami akan terus mendampingi selama masa transisi untuk memastikan implementasi berjalan mulus.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-16 p-6 bg-gray-50 rounded-lg border border-gray-200 text-center" data-aos="fade-up">
+                    <p class="text-gray-700">
+                        <i class="fas fa-tools text-primary mr-2"></i>
+                        Tim kami mendampingi penuh sampai sistem berjalan mulus.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Klien Kami</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Dipercaya oleh vendor konveksi, produsen jersey, penyedia seragam sekolah, hingga fashion brand nasional.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Budi Santoso</h4>
+                            <p class="text-sm text-gray-500">Pemilik Konveksi Seragam</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 italic">"Sejak menggunakan JahitStatus, pertanyaan 'pesanan saya sudah sampai mana?' berkurang drastis. Pelanggan senang bisa memantau sendiri, tim produksi jadi lebih fokus."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Siti Rahayu</h4>
+                            <p class="text-sm text-gray-500">CEO Fashion Brand</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-600 italic">"Kalkulator HPP sangat membantu kami menentukan harga jual yang tepat. Fitur tracking juga memberikan kesan profesional pada brand kami. Worth it!"</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Hendra Wijaya</h4>
+                            <p class="text-sm text-gray-500">Produsen Jersey Olahraga</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 italic">"Kami menangani ratusan order jersey tim setiap bulan. JahitStatus membantu kami tetap terorganisir dan memberikan transparansi kepada pelanggan. Sangat direkomendasikan!"</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12" data-aos="fade-up">
+                <p class="text-gray-700 mb-6 text-lg">Ingin tahu apakah sistem ini cocok untuk bisnis Anda?</p>
+                <a href="#contact" class="inline-block py-3 px-8 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-colors">
+                    Hubungi Kami Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Kontak Kami</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md" data-aos="fade-right">
+                    <h3 class="text-2xl font-semibold mb-6">Kirim Pesan</h3>
+                    <form id="contact-form">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 mb-2">Nama Lengkap</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="block text-gray-700 mb-2">Nomor Telepon</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-2">Pesan</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 px-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-colors flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2 text-lg"></i> Kirim Pesan via WhatsApp
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-semibold mb-6">Informasi Kontak</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-light rounded-full p-3 text-primary">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Kantor Pusat</h4>
+                                <p class="text-gray-600">Jl. Produksi No. 45, Sleman, Yogyakarta</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-light rounded-full p-3 text-primary">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-600">support@jahitstatus.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-light rounded-full p-3 text-primary">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Telepon</h4>
+                                <p class="text-gray-600">+62 812 3456 7890</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Jam Operasional</h4>
+                        <p class="text-gray-600 mb-2">Senin - Jumat: 08.00 - 17.00 WIB</p>
+                        <p class="text-gray-600">Sabtu: 09.00 - 15.00 WIB</p>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Ikuti Kami</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">JahitStatus.com</h4>
+                    <p class="text-gray-400 mb-4">Solusi Digital untuk Konveksi Modern</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Fitur</a></li>
+                        <li><a href="#demo" class="text-gray-400 hover:text-white transition-colors">Demo</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Harga</a></li>
+                        <li><a href="#implementation" class="text-gray-400 hover:text-white transition-colors">Implementasi</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Berlangganan Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Dapatkan tips & update terbaru untuk bisnis konveksi Anda</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email Anda" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-primary hover:bg-primary-dark px-4 py-2 rounded-r-lg transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 JahitStatus.com – Solusi Digital untuk Konveksi Modern. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- AOS Init -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('opacity-100', 'visible');
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+                backToTopButton.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <!-- Tracking Script -->
+    <script src="assets/js/tracking.js"></script>
+    
+    <!-- Animation Effects -->
+    <script src="assets/js/animations.js"></script>
+    <!-- Contact Form Script -->
+    <script src="assets/js/contact.js"></script>
+</body>
+</html>
