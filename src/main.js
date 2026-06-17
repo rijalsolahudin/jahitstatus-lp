@@ -10,7 +10,6 @@ import './assets/css/tracking-modern.css';
 import './assets/css/chat-bubble.css';
 
 // Import JavaScript kustom
-import './assets/js/tracking.js';
 import './assets/js/animations.js';
 import './assets/js/contact.js';
 import './assets/js/mobile-menu.js';
