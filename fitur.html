@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <title>
+      Fitur Lengkap JahitStatus.com - Solusi Pelacakan Order Konveksi
+    </title>
+
+    <!-- Critical CSS untuk konten above-the-fold dan mencegah FOUC -->
+    <style>
+      /* Mencegah FOUC dengan menyembuyenikan body sampai CSS dimuat */
+      body {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .js-loaded {
+        opacity: 1;
+      }
+
+      /* Critical CSS untuk konten yang terlihat pertama kali */
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      @media (max-width: 640px) {
+        html {
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        html {
+          font-size: 13px;
+        }
+      }
+
+      /* Container styles */
+      .container {
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: clamp(1rem, 5%, 2rem);
+        padding-right: clamp(1rem, 5%, 2rem);
+      }
+
+      /* Basic layout styles */
+      .flex {
+        display: flex;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
+      .justify-between {
+        justify-content: space-between;
+      }
+
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .py-3 {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+
+      .bg-white {
+        background-color: #ffffff;
+      }
+
+      .shadow-md {
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      .sticky {
+        position: sticky;
+      }
+
+      .top-0 {
+        top: 0;
+      }
+
+      .z-50 {
+        z-index: 50;
+      }
+
+      /* Typography */
+      .font-sans {
+        font-family:
+          'Inter',
+          system-ui,
+          -apple-system,
+          sans-serif;
+      }
+
+      /* Navbar Layout */
+      .floating-navbar-container {
+        position: fixed;
+        top: 1.5rem;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        padding: 0 clamp(1rem, 5%, 2rem);
+      }
+
+      .floating-navbar-container header {
+        border: 1px solid rgba(241, 245, 249, 0.8);
+        box-shadow:
+          0 10px 25px -5px rgba(0, 0, 0, 0.05),
+          0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+
+    <!-- AOS Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Main JS entry for Vite -->
+    <script type="module" src="/src/main.js"></script>
+  </head>
+
+  <body class="font-sans text-gray-800 bg-gray-50">
+    <!-- Header / Navigation -->
+    <div class="floating-navbar-container">
+      <header
+        class="container mx-auto rounded-full bg-white/80 backdrop-blur-md border border-slate-100 shadow-md"
+      >
+        <div class="px-6 py-2.5 flex justify-between items-center">
+          <a href="/index.html" class="flex items-center space-x-2">
+            <img
+              src="/src/assets/images/logo-only.png"
+              alt="JahitStatus Logo"
+              class="h-9"
+            />
+            <span class="text-lg font-bold text-primary"
+              >JahitStatus<span class="text-gray-800">.com</span></span
+            >
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-gray-500 hover:text-primary focus:outline-none"
+          >
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex items-center space-x-8">
+            <a
+              href="/fitur.html"
+              class="text-primary transition-colors text-sm font-semibold"
+              >Fitur</a
+            >
+            <a
+              href="/index.html#pricing"
+              class="text-gray-600 hover:text-primary transition-colors text-sm font-medium"
+              >Harga</a
+            >
+            <a
+              href="/index.html#implementation"
+              class="text-gray-600 hover:text-primary transition-colors text-sm font-medium"
+              >Implementasi</a
+            >
+            <a
+              href="/index.html#contact"
+              class="text-gray-600 hover:text-primary transition-colors text-sm font-medium"
+              >Kontak</a
+            >
+            <a
+              href="/index.html#pricing"
+              class="bg-[#008CB7] hover:bg-[#007ba2] text-white px-5 py-1.5 rounded-full transition-colors font-semibold text-sm shadow-sm"
+              >Mulai Sekarang</a
+            >
+          </nav>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <nav
+          id="mobile-menu"
+          class="hidden md:hidden px-6 py-3 border-t border-slate-100/50 bg-white/95 rounded-b-2xl"
+        >
+          <div class="flex flex-col space-y-3">
+            <a
+              href="/fitur.html"
+              class="text-primary transition-colors text-sm font-semibold"
+              >Fitur</a
+            >
+            <a
+              href="/index.html#pricing"
+              class="text-gray-600 hover:text-primary transition-colors text-sm font-medium"
+              >Harga</a
+            >
+            <a
+              href="/index.html#implementation"
+              class="text-gray-600 hover:text-primary transition-colors text-sm font-medium"
+              >Implementasi</a
+            >
+            <a
+              href="/index.html#contact"
+              class="text-gray-600 hover:text-primary transition-colors text-sm font-medium"
+              >Kontak</a
+            >
+            <a
+              href="/index.html#pricing"
+              class="bg-[#008CB7] hover:bg-[#007ba2] text-white px-5 py-2 rounded-full transition-colors font-semibold text-sm text-center shadow-sm"
+              >Mulai Sekarang</a
+            >
+          </div>
+        </nav>
+      </header>
+    </div>
+
+    <!-- Header Banner -->
+    <section
+      class="py-20 sm:py-24 md:py-28 bg-gradient-to-br from-primary-light/10 via-white to-gray-50/50 relative overflow-hidden"
+    >
+      <div class="absolute inset-0 z-0 opacity-5">
+        <div
+          class="absolute inset-0 bg-primary-light opacity-10 pattern-dots"
+        ></div>
+      </div>
+      <div
+        class="container mx-auto responsive-padding text-center relative z-10 pt-16 sm:pt-20"
+      >
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 leading-tight"
+        >
+          Fitur Lengkap JahitStatus
+        </h1>
+        <p
+          class="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+        >
+          Jelajahi seluruh fitur unggulan kami yang dirancang khusus untuk
+          memodernisasi dan mengotomatisasi bisnis konveksi Anda.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Features Section (Flat Grid) -->
+    <section class="py-12 sm:py-16 md:py-20 bg-white">
+      <div class="container mx-auto responsive-padding">
+        <div class="text-center mb-10 sm:mb-16" data-aos="fade-up">
+          <span
+            class="inline-block px-2 sm:px-3 py-1 bg-primary-light bg-opacity-20 text-primary rounded-full text-xs sm:text-sm font-semibold mb-2 sm:mb-3"
+            >FITUR UNGGULAN</span
+          >
+          <h2
+            class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-shadow"
+          >
+            Semua Fitur Utama
+          </h2>
+          <div
+            class="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary to-primary-dark mx-auto mb-4 sm:mb-6 rounded-full"
+          ></div>
+          <p
+            class="text-sm sm:text-base text-gray-600 max-w-xl sm:max-w-2xl mx-auto"
+          >
+            Solusi digital menyeluruh untuk menyederhanakan manajemen konveksi
+            Anda
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+        >
+          <!-- Feature 1 -->
+          <div
+            class="bg-white border border-slate-100 rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md"
+            >
+              <i class="fas fa-fingerprint text-lg sm:text-2xl"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+              Kode Order Unik Otomatis
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Pantau status tiap pesanan dengan satu kode. Sistem otomatis
+              menghasilkan kode unik untuk setiap order yang masuk, memudahkan
+              pelacakan dan referensi.
+            </p>
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+              <span
+                class="text-primary font-medium flex items-center text-sm sm:text-base"
+              >
+                <span>Mudah diingat</span>
+                <i class="fas fa-check-circle ml-2"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="bg-white border border-slate-100 rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md"
+            >
+              <i class="fas fa-chart-line text-lg sm:text-2xl"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+              Progress Tracking
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Dari Order Masuk → Belanja Bahan → Potong → Jahit → QC → Packing →
+              Dikirim → Selesai. Pantau setiap tahapan produksi dengan detail.
+            </p>
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+              <span
+                class="text-primary font-medium flex items-center text-sm sm:text-base"
+              >
+                <span>Real-time updates</span>
+                <i class="fas fa-check-circle ml-2"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="bg-white border border-slate-100 rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md"
+            >
+              <i class="fas fa-palette text-lg sm:text-2xl"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+              Branding Custom
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Gunakan sistem dengan identitas brand Anda sendiri. Saat ini
+              tersedia kustomisasi <span class="font-medium">nama</span> dan
+              <span class="font-medium">domain</span>. Fitur kustomisasi
+              <span class="text-gray-500 italic">warna, logo, dan email</span>
+              sedang dalam tahap pengembangan.
+            </p>
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+              <span
+                class="text-primary font-medium flex items-center text-sm sm:text-base"
+              >
+                <span>White-label solution</span>
+                <i class="fas fa-check-circle ml-2"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="bg-white border border-slate-100 rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md"
+            >
+              <i class="fas fa-chart-pie text-lg sm:text-2xl"></i>
+            </div>
+            <div
+              class="absolute top-2 sm:top-4 -right-1 bg-yellow-400 text-yellow-900 text-xs font-bold py-1 px-2 rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg shadow-md z-10"
+            >
+              Coming Soon
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+              Laporan Produksi
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Pantau data produksi harian, mingguan, dan riwayat order kapan
+              saja. Dapatkan insight berharga untuk pengambilan keputusan
+              bisnis.
+            </p>
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+              <span
+                class="text-primary font-medium flex items-center text-sm sm:text-base"
+              >
+                <span>Analisis mendalam</span>
+                <i class="fas fa-check-circle ml-2"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Feature 5 -->
+          <div
+            class="bg-white border border-slate-100 rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md"
+            >
+              <i class="fas fa-calculator text-lg sm:text-2xl"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+              Kalkulator HPP
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Hitung biaya produksi secara otomatis (bahan, tenaga kerja,
+              overhead) untuk membantu menentukan harga jual dengan lebih
+              akurat.
+            </p>
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+              <span
+                class="text-primary font-medium flex items-center text-sm sm:text-base"
+              >
+                <span>Harga jual optimal</span>
+                <i class="fas fa-check-circle ml-2"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Feature 6 (New) -->
+          <div
+            class="bg-white border border-slate-100 rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md"
+            >
+              <i class="fas fa-bell text-lg sm:text-2xl"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+              Notifikasi Status
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Kirim update otomatis ke pelanggan saat status pesanan berubah.
+              Tingkatkan kepercayaan dengan transparansi proses produksi.
+            </p>
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+              <span
+                class="text-primary font-medium flex items-center text-sm sm:text-base"
+              >
+                <span>WhatsApp & Email</span>
+                <i class="fas fa-check-circle ml-2"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Feature 7 (Coming Soon) -->
+          <div
+            class="bg-white border border-slate-100 rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay="700"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md"
+            >
+              <i class="fas fa-calendar-alt text-lg sm:text-2xl"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+              Schedule Produksi
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Pantau dan update produksi dengan tampilan interaktif kanban
+              board. Kelola jadwal produksi dengan lebih efisien dan visual.
+            </p>
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+              <span
+                class="text-primary font-medium flex items-center text-sm sm:text-base"
+              >
+                <span>Kanban Board</span>
+                <i class="fas fa-check-circle ml-2"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Feature 8 (New - Asisten AI Customer) -->
+          <div
+            class="bg-white border border-slate-100 rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay="800"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md"
+            >
+              <i class="fas fa-comment-dots text-lg sm:text-2xl"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+              Asisten AI Customer
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Layanan pelacakan status pesanan mandiri via Chatbot AI interaktif
+              24/7. Pelanggan cukup bertanya langsung dan AI akan menyajikan
+              progres pengerjaan.
+            </p>
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+              <span
+                class="text-primary font-medium flex items-center text-sm sm:text-base"
+              >
+                <span>Self-Service Chat Widget</span>
+                <i class="fas fa-check-circle ml-2"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Feature 9 (New - Asisten AI Admin) -->
+          <div
+            class="bg-white border border-slate-100 rounded-xl shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            data-aos="fade-up"
+            data-aos-delay="900"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-primary-dark w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5 text-white shadow-md"
+            >
+              <i class="fas fa-robot text-lg sm:text-2xl"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+              Asisten AI Admin
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600">
+              Cari pesanan, rekap laporan borongan, hingga susun draf pesan
+              WhatsApp konfirmasi / tagihan secara otomatis hanya dengan
+              mengetik perintah chat sederhana.
+            </p>
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+              <span
+                class="text-primary font-medium flex items-center text-sm sm:text-base"
+              >
+                <span>Smart Command Center</span>
+                <i class="fas fa-check-circle ml-2"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div>
+            <h4 class="text-xl font-semibold mb-4">JahitStatus.com</h4>
+            <p class="text-gray-400 mb-4">
+              Solusi Digital untuk Konveksi Modern
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-instagram text-base"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-linkedin-in text-base"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-whatsapp text-base"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Tautan Cepat</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="/fitur.html"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Fitur</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/index.html#pricing"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Harga</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/index.html#implementation"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Implementasi</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/index.html#contact"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Kontak</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Legal -->
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Legal</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Syarat & Ketentuan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Kebijakan Privasi</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >FAQ</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Berlangganan Newsletter</h4>
+            <p class="text-gray-400 mb-4">
+              Dapatkan tips & update terbaru untuk bisnis konveksi Anda
+            </p>
+            <form class="flex">
+              <input
+                type="email"
+                placeholder="Email Anda"
+                class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800"
+              />
+              <button
+                type="submit"
+                class="bg-primary hover:bg-primary-dark px-4 py-2 rounded-r-lg transition-colors"
+              >
+                <i class="fas fa-paper-plane text-base"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>
+            © 2025 JahitStatus.com – Solusi Digital untuk Konveksi Modern. All
+            rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50"
+    >
+      <i class="fas fa-chevron-up text-base"></i>
+    </button>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- AOS Init -->
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false,
+      });
+
+      // Back to Top Button
+      const backToTopButton = document.getElementById('back-to-top');
+
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.add('opacity-100', 'visible');
+          backToTopButton.classList.remove('opacity-0', 'invisible');
+        } else {
+          backToTopButton.classList.add('opacity-0', 'invisible');
+          backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+      });
+
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      });
+
+      // Toggle mobile menu
+      const menuBtn = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    </script>
+  </body>
+</html>

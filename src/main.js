@@ -15,16 +15,22 @@ import './assets/js/contact.js';
 import './assets/js/mobile-menu.js';
 
 // Inisialisasi AOS dan menangani FOUC
-document.addEventListener('DOMContentLoaded', () => {
+const initMain = () => {
   // Inisialisasi AOS
   AOS.init({
     duration: 800,
     easing: 'ease-in-out',
     once: true,
-    mirror: false
+    mirror: false,
   });
-  
+
   // Menangani FOUC (Flash of Unstyled Content)
   // Menambahkan kelas js-loaded ke body setelah CSS dimuat
   document.body.classList.add('js-loaded');
-});
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMain);
+} else {
+  initMain();
+}

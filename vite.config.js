@@ -17,6 +17,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        fitur: resolve(__dirname, 'fitur.html'),
       },
     },
   },
@@ -35,8 +36,8 @@ export default defineConfig({
             console.log(`Copied ${file} to dist folder`);
           }
         });
-      }
-    }
+      },
+    },
   ],
   // Konfigurasi untuk optimasi
   optimizeDeps: {
