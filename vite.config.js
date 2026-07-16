@@ -1,15 +1,16 @@
 import { defineConfig } from 'vite';
+import preact from '@preact/preset-vite';
 import { resolve } from 'path';
 import fs from 'fs';
 import { copyFileSync } from 'fs';
+import prerender from '@prerenderer/rollup-plugin';
+import PuppeteerRenderer from '@prerenderer/renderer-puppeteer';
 
 export default defineConfig({
-  // Konfigurasi server development
   server: {
-    port: 3200, // Port kustom yang diinginkan
-    open: true, // Buka browser secara otomatis saat server dimulai
+    port: 3200,
+    open: true,
   },
-  // Konfigurasi build
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -21,12 +22,19 @@ export default defineConfig({
       },
     },
   },
-  // Plugin untuk menyalin file SEO (robots.txt dan sitemap.xml) ke folder dist
   plugins: [
+    preact(),
+    prerender({
+      staticDir: resolve(__dirname, 'dist'),
+      routes: ['/'],
+      renderer: new PuppeteerRenderer({
+        renderAfterTime: 500,
+        headless: true,
+      }),
+    }),
     {
       name: 'copy-seo-files',
       closeBundle() {
-        // Pastikan robots.txt dan sitemap.xml disalin ke folder dist
         const seoFiles = ['robots.txt', 'sitemap.xml'];
         seoFiles.forEach(file => {
           const srcPath = resolve(__dirname, file);
@@ -39,11 +47,9 @@ export default defineConfig({
       },
     },
   ],
-  // Konfigurasi untuk optimasi
   optimizeDeps: {
     include: ['aos'],
   },
-  // Konfigurasi untuk CSS
   css: {
     devSourcemap: true,
   },
