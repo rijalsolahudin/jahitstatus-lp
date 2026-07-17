@@ -71,7 +71,7 @@ export function Hero() {
           </div>
 
           <div
-            class="hidden md:flex w-full md:w-1/2 justify-end"
+            class="hidden md:flex w-full md:w-1/2 justify-center"
             data-aos="fade-left"
             data-aos-duration="1000"
           >
