@@ -88,8 +88,11 @@ body {
 }
 
 /* Responsive Spacing Utilities */
+/* Vertical only — horizontal padding is handled once by .container so all
+   sections align to the same left/right edge on wide screens. */
 .responsive-padding {
-  padding: clamp(1rem, 5vw, 2rem);
+  padding-top: clamp(1rem, 5vw, 2rem);
+  padding-bottom: clamp(1rem, 5vw, 2rem);
 }
 
 .responsive-margin {
