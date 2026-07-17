@@ -84,12 +84,12 @@ export function Hero() {
               </div>
 
               <div class="hero-badge hero-badge--bottom-left">
-                <div class="hero-badge__icon hero-badge__icon--orange">
-                  <i class="fas fa-bolt"></i>
+                <div class="hero-badge__icon hero-badge__icon--blue">
+                  <i class="fas fa-robot"></i>
                 </div>
                 <div class="hero-badge__text">
-                  <span class="hero-badge__label">Setup Cepat</span>
-                  <span class="hero-badge__value">5 Menit</span>
+                  <span class="hero-badge__label">Asisten AI</span>
+                  <span class="hero-badge__value">24/7 Aktif</span>
                 </div>
               </div>
 
