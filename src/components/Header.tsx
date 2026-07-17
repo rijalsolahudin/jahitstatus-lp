@@ -27,19 +27,19 @@ export function Header() {
   };
 
   return (
-    <header 
+    <header
       class={`fixed top-0 left-0 w-full z-50 pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         isScrolled ? 'pt-0 pb-0 pl-0 pr-0' : 'pt-4 pb-0 pl-4 pr-4'
       }`}
     >
-      <div 
+      <div
         class={`mx-auto w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto bg-white ${
-          isScrolled 
-            ? 'rounded-none shadow-md border-b border-gray-100 mt-0 max-w-[2560px]' 
+          isScrolled
+            ? 'rounded-none shadow-md border-b border-gray-100 mt-0 max-w-[2560px]'
             : 'max-w-[1536px] rounded-2xl shadow-md border border-gray-200'
         }`}
       >
-        <div class={`container mx-auto px-4 flex justify-between items-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        <div class={`w-full px-4 flex justify-between items-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled ? 'py-2' : 'py-3.5'
         }`}>
           <a href="#" class="flex items-center space-x-2" onClick={closeMenu}>

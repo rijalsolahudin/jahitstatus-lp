@@ -26,7 +26,10 @@ body {
   }
 }
 
-/* Fluid container: full width, centered, capped at 1536px with side padding */
+/* Fluid container: full width, centered, capped at 1536px.
+   Side padding only while the viewport is narrower than the cap (so content
+   doesn't touch the screen edge). Once the container maxes out, drop the
+   side padding so content spans the full 1536px — matching the header pill. */
 .container {
   width: 100%;
   max-width: 1536px;
@@ -34,6 +37,13 @@ body {
   margin-right: auto;
   padding-left: clamp(1rem, 5%, 2rem);
   padding-right: clamp(1rem, 5%, 2rem);
+}
+
+@media (min-width: 1536px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .parallax-bg {
