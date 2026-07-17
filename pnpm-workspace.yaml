@@ -1,3 +1,6 @@
 allowBuilds:
   esbuild: false
   puppeteer: false
+
+overrides:
+  puppeteer: "^22.15.0"

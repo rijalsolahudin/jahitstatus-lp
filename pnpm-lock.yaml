@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  puppeteer: ^22.15.0
+
 importers:
 
   .:
@@ -423,7 +426,7 @@ packages:
     resolution: {integrity: sha512-S0LY0xYGnXLo/8DqkiT+pDLDd0X5msXSeaPzq5goqgmFfZOQEME3+A7j1T2iClrNzk4Rjgfu4KTA8o508GYXiQ==}
     engines: {node: '>=8.0.0'}
     peerDependencies:
-      puppeteer: '>= 2'
+      puppeteer: ^22.15.0
 
   '@prerenderer/rollup-plugin@0.3.12':
     resolution: {integrity: sha512-8l0GWGrZw1AZPCmGPE0u1c0tOvsUimrrHhOvjeq0ahRuH40o8OU8iivJUFNYOU9LfNvtSZbOPhfsqU0d5IuMvw==}
