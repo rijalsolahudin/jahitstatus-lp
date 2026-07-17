@@ -1,5 +1,5 @@
 # Base image
-FROM node:18-alpine as build
+FROM node:18-alpine AS build
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -7,8 +7,8 @@ RUN npm install -g pnpm
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and pnpm-lock.yaml
-COPY package.json pnpm-lock.yaml ./
+# Copy package.json, pnpm-lock.yaml and pnpm-workspace.yaml
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile
