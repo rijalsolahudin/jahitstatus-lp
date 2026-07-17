@@ -26,11 +26,6 @@ export function Hero() {
               data-aos="zoom-in"
               data-aos-duration="800"
             >
-              {/* Badge Asisten AI (Hanya muncul di mobile) */}
-              <div class="absolute -top-3 right-4 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full flex md:hidden items-center shadow-md">
-                <i class="fas fa-robot mr-1.5"></i> Asisten AI 24/7 Aktif
-              </div>
-
               <p class="text-base sm:text-lg font-bold text-gray-800">
                 "Sudah sampai tahap apa ya order saya?"
                 <span class="text-primary text-xs sm:text-sm ml-1 sm:ml-2 block sm:inline-block mt-1 sm:mt-0">
