@@ -115,7 +115,7 @@ export function Hero() {
                     <div class="hero-tablet__camera"></div>
                     <div class="hero-tablet__screen">
                       <img
-                        src="/src/assets/images/previews/tracking.webp"
+                        src="/images/previews/tracking.webp"
                         alt="JahitStatus Dashboard Preview"
                         class="hero-tablet__screen-img"
                         loading="eager"

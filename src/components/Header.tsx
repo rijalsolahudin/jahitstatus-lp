@@ -44,7 +44,7 @@ export function Header() {
         }`}>
           <a href="#" class="flex items-center space-x-2" onClick={closeMenu}>
             <img
-              src="/src/assets/images/logo-only.png"
+              src="/images/logo-only.png"
               alt="JahitStatus Logo"
               class="h-10"
             />

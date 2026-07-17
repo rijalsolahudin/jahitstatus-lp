@@ -81,11 +81,11 @@ export function Showcase() {
               </p>
             </div>
             <div
-              onClick={() => openLightbox("/src/assets/images/previews/schedule-production-boards-view.jpg", "Kanban Board Produksi")}
+              onClick={() => openLightbox("/images/previews/schedule-production-boards-view.jpg", "Kanban Board Produksi")}
               class="mt-6 -mx-6 -mb-8 overflow-hidden rounded-b-2xl border-t border-gray-100 cursor-zoom-in"
             >
               <img
-                src="/src/assets/images/previews/schedule-production-boards-view.jpg"
+                src="/images/previews/schedule-production-boards-view.jpg"
                 alt="Kanban Board"
                 class="w-full h-48 sm:h-52 object-cover object-left-top"
               />
@@ -110,11 +110,11 @@ export function Showcase() {
               </p>
             </div>
             <div
-              onClick={() => openLightbox("/src/assets/images/previews/schedule-production-calendar-view.jpg", "Kalender Produksi")}
+              onClick={() => openLightbox("/images/previews/schedule-production-calendar-view.jpg", "Kalender Produksi")}
               class="mt-6 -mx-6 -mb-8 overflow-hidden rounded-b-2xl border-t border-gray-100 cursor-zoom-in"
             >
               <img
-                src="/src/assets/images/previews/schedule-production-calendar-view.jpg"
+                src="/images/previews/schedule-production-calendar-view.jpg"
                 alt="Kalender Produksi"
                 class="w-full h-48 sm:h-52 object-cover object-top"
               />
@@ -139,11 +139,11 @@ export function Showcase() {
               </p>
             </div>
             <div
-              onClick={() => openLightbox("/src/assets/images/previews/tracking.webp", "Portal Tracking Mandiri")}
+              onClick={() => openLightbox("/images/previews/tracking.webp", "Portal Tracking Mandiri")}
               class="overflow-hidden rounded-2xl border border-gray-100 flex-grow flex items-center bg-gray-50 cursor-zoom-in"
             >
               <img
-                src="/src/assets/images/previews/tracking.webp"
+                src="/images/previews/tracking.webp"
                 alt="Portal Tracking Pelanggan"
                 class="w-full h-full object-cover"
               />
@@ -168,11 +168,11 @@ export function Showcase() {
               </p>
             </div>
             <div
-              onClick={() => openLightbox("/src/assets/images/previews/ai-assisten-admin-square.png", "Asisten AI Admin")}
+              onClick={() => openLightbox("/images/previews/ai-assisten-admin-square.png", "Asisten AI Admin")}
               class="flex-1 w-full overflow-hidden rounded-2xl border border-gray-100 bg-gray-50/50 flex items-center justify-center p-3 cursor-zoom-in"
             >
               <img
-                src="/src/assets/images/previews/ai-assisten-admin-square.png"
+                src="/images/previews/ai-assisten-admin-square.png"
                 alt="Asisten AI Admin"
                 class="w-full h-auto max-h-[280px] md:max-h-[320px] object-contain"
               />
