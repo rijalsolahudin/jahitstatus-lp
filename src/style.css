@@ -26,8 +26,12 @@ body {
   }
 }
 
-/* Responsive Container Padding */
+/* Fluid container: full width, centered, capped at 1536px with side padding */
 .container {
+  width: 100%;
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
   padding-left: clamp(1rem, 5%, 2rem);
   padding-right: clamp(1rem, 5%, 2rem);
 }
