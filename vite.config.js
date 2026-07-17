@@ -3,8 +3,6 @@ import preact from '@preact/preset-vite';
 import { resolve } from 'path';
 import fs from 'fs';
 import { copyFileSync } from 'fs';
-import prerender from '@prerenderer/rollup-plugin';
-import PuppeteerRenderer from '@prerenderer/renderer-puppeteer';
 
 export default defineConfig({
   server: {
@@ -23,14 +21,12 @@ export default defineConfig({
     },
   },
   plugins: [
-    preact(),
-    prerender({
-      staticDir: resolve(__dirname, 'dist'),
-      routes: ['/'],
-      renderer: new PuppeteerRenderer({
-        renderAfterTime: 500,
-        headless: true,
-      }),
+    preact({
+      prerender: {
+        enabled: true,
+        renderTarget: '#app',
+        prerenderScript: resolve(__dirname, 'src/prerender.tsx'),
+      },
     }),
     {
       name: 'copy-seo-files',
