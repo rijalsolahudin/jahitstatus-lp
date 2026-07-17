@@ -26,6 +26,11 @@ export function Hero() {
               data-aos="zoom-in"
               data-aos-duration="800"
             >
+              {/* Badge Asisten AI */}
+              <div class="absolute -top-3 right-4 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full flex items-center shadow-md">
+                <i class="fas fa-robot mr-1.5"></i> Asisten AI 24/7 Aktif
+              </div>
+
               <p class="text-base sm:text-lg font-bold text-gray-800">
                 "Sudah sampai tahap apa ya order saya?"
                 <span class="text-primary text-xs sm:text-sm ml-1 sm:ml-2 block sm:inline-block mt-1 sm:mt-0">
@@ -43,9 +48,13 @@ export function Hero() {
                   <i class="fas fa-check-circle text-green-500 mr-2"></i>
                   Tingkatkan kepuasan pelanggan
                 </div>
-                <div class="flex items-center sm:ml-4">
+                <div class="flex items-center mb-2 sm:mb-0 sm:ml-4">
                   <i class="fas fa-check-circle text-green-500 mr-2"></i>
                   Kurangi pertanyaan berulang
+                </div>
+                <div class="flex items-center sm:ml-4">
+                  <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                  Didukung Asisten AI
                 </div>
               </div>
             </div>
@@ -67,7 +76,7 @@ export function Hero() {
           </div>
 
           <div
-            class="w-full md:w-1/2 flex justify-center"
+            class="hidden md:flex w-full md:w-1/2 justify-center"
             data-aos="fade-left"
             data-aos-duration="1000"
           >
