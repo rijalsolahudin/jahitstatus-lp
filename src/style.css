@@ -155,6 +155,7 @@ body {
   align-items: center;
   justify-content: center;
   perspective: 1200px;
+  container-type: inline-size;
 }
 
 /* Tablet wrapper with 3D transform */
@@ -540,6 +541,76 @@ body {
   }
   50% {
     transform: translateY(5px) rotate(2.5deg);
+  }
+}
+
+/* ===== Fluid preview scaling (driven by the hero column width) ===== */
+/* The tablet already shrinks with the column (its image is width:100%), but
+   the phone and floating badges are fixed-size. Scale them down and pull the
+   badges inward as the scene itself gets narrower, so nothing overflows on
+   small laptops where the hero column is < the 560px design width. */
+@container (max-width: 520px) {
+  .hero-phone {
+    transform: scale(0.82);
+    transform-origin: bottom right;
+  }
+  .hero-badge {
+    padding: 8px 12px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+  .hero-badge__icon {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+  .hero-badge__label {
+    font-size: 10px;
+  }
+  .hero-badge__value {
+    font-size: 12px;
+  }
+  .hero-badge--top-right {
+    top: -6px;
+    right: -16px;
+  }
+  .hero-badge--right {
+    right: -26px;
+  }
+  .hero-badge--bottom-left {
+    left: -22px;
+  }
+  .hero-badge--top-left {
+    left: -28px;
+  }
+}
+
+@container (max-width: 430px) {
+  .hero-phone {
+    transform: scale(0.68);
+  }
+  .hero-badge {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+  .hero-badge__icon {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+  .hero-badge--top-right {
+    top: -4px;
+    right: -10px;
+  }
+  .hero-badge--right {
+    right: -18px;
+  }
+  .hero-badge--bottom-left {
+    left: -14px;
+  }
+  .hero-badge--top-left {
+    left: -18px;
   }
 }
 
