@@ -99,11 +99,11 @@ export function Hero() {
 
               <div class="hero-badge hero-badge--top-left">
                 <div class="hero-badge__icon hero-badge__icon--purple">
-                  <i class="fas fa-envelope"></i>
+                  <i class="fas fa-globe"></i>
                 </div>
                 <div class="hero-badge__text">
-                  <span class="hero-badge__label">Notifikasi</span>
-                  <span class="hero-badge__value">Otomatis</span>
+                  <span class="hero-badge__label">Website</span>
+                  <span class="hero-badge__value">Domain Sendiri</span>
                 </div>
               </div>
 
