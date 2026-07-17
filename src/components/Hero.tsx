@@ -26,8 +26,8 @@ export function Hero() {
               data-aos="zoom-in"
               data-aos-duration="800"
             >
-              {/* Badge Asisten AI */}
-              <div class="absolute -top-3 right-4 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full flex items-center shadow-md">
+              {/* Badge Asisten AI (Hanya muncul di mobile) */}
+              <div class="absolute -top-3 right-4 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full flex md:hidden items-center shadow-md">
                 <i class="fas fa-robot mr-1.5"></i> Asisten AI 24/7 Aktif
               </div>
 
@@ -52,7 +52,7 @@ export function Hero() {
                   <i class="fas fa-check-circle text-green-500 mr-2"></i>
                   Kurangi pertanyaan berulang
                 </div>
-                <div class="flex items-center sm:ml-4">
+                <div class="flex md:hidden items-center sm:ml-4">
                   <i class="fas fa-check-circle text-green-500 mr-2"></i>
                   Didukung Asisten AI
                 </div>
