@@ -42,3 +42,6 @@ coverage
 # Temporary files
 .temp
 .tmp
+
+# Vite temporary config files
+vite.config.js.timestamp-*.mjs

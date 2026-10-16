@@ -1,8 +1,11 @@
+name: jahitstatus-lp
+
 services:
   landingpage:
     build:
       context: .
       dockerfile: Dockerfile
+    image: jahitstatus-lp-landingpage:latest
     container_name: jahitstatus-landingpage
     ports:
       - "3200:80"
