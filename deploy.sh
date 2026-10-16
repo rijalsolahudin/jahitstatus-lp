@@ -96,6 +96,11 @@ ok "Image selesai di-build."
 
 # ---------------------------------------------------------------- 4. naikkan container
 info "Naikkan container..."
+# Tangani bentrok nama container sisa project lama (mis. setelah rename project).
+if docker inspect "$CONTAINER" >/dev/null 2>&1 && [ -z "$(compose ps -q "$SERVICE" 2>/dev/null)" ]; then
+  warn "Container $CONTAINER ada tapi bukan milik project ini — dihapus dulu."
+  docker rm -f "$CONTAINER" >/dev/null 2>&1 || true
+fi
 compose up -d --remove-orphans
 
 # ---------------------------------------------------------------- 5. tunggu siap
