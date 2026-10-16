@@ -5,6 +5,11 @@
 # Hasil Vite itu file statis yang di-bake ke image, jadi BEDA dari backend:
 # setiap perubahan (termasuk kode) WAJIB build ulang.
 #
+# Jalankan ulang pakai bash kalau dipanggil via `sh` (script ini butuh pipefail).
+if [ -z "${BASH_VERSION:-}" ]; then
+  exec bash "$0" "$@"
+fi
+
 set -euo pipefail
 
 # ---------------------------------------------------------------- lokasi & config
