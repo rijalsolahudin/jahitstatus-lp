@@ -92,7 +92,7 @@ export function Header() {
               href="#pricing"
               class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full transition-colors font-medium"
             >
-              Mulai Sekarang
+              Mulai Gratis
             </a>
           </nav>
         </div>
@@ -134,7 +134,7 @@ export function Header() {
                 onClick={closeMenu}
                 class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full transition-colors font-medium text-center"
               >
-                Mulai Sekarang
+                Mulai Gratis
               </a>
             </div>
           </nav>

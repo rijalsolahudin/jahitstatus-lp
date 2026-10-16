@@ -11,6 +11,10 @@ export function Pricing() {
             Paket Berlangganan
           </h2>
           <div class="w-20 h-1 bg-white mx-auto mb-6"></div>
+          <p class="text-blue-50 text-base md:text-lg max-w-2xl mx-auto">
+            Coba paket Basic <span class="font-bold text-white">gratis 1 bulan pertama</span>.
+            Paket lain langsung aktif setelah pembayaran.
+          </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -21,6 +25,9 @@ export function Pricing() {
             data-aos-delay="100"
           >
             <div class="p-8 border-b border-gray-100">
+              <span class="inline-block mb-3 bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">
+                Gratis 1 bulan pertama
+              </span>
               <h3 class="text-2xl font-bold mb-2 text-gray-800">Basic</h3>
               <div class="text-primary text-3xl font-bold mb-2">
                 Rp 499.000
@@ -57,7 +64,7 @@ export function Pricing() {
                 href="https://app.jahitstatus.com/register?plan_id=01987d3c-5e91-7090-b321-2935d82e167f"
                 class="block w-full py-3 px-4 text-center bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl transition-colors shadow-sm hover:shadow"
               >
-                Mulai Sekarang
+                Mulai Gratis
               </a>
             </div>
           </div>

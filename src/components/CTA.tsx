@@ -18,7 +18,7 @@ export function CTA() {
               href="https://app.jahitstatus.com/register"
               class="w-full sm:w-auto px-8 py-3.5 bg-white text-primary-dark hover:bg-blue-50 font-bold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center"
             >
-              Daftar Sekarang - Gratis 14 Hari
+              Daftar Sekarang - Gratis 1 Bulan
             </a>
             <a
               href="#contact"

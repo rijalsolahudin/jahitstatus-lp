@@ -59,7 +59,7 @@ export function Hero() {
                 href="#pricing"
                 class="bg-primary hover:bg-primary-dark text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-colors font-medium text-center flex items-center justify-center text-sm sm:text-base"
               >
-                <i class="fas fa-rocket mr-2"></i> Mulai Sekarang
+                <i class="fas fa-rocket mr-2"></i> Mulai Gratis
               </a>
               <a
                 href="#features"
