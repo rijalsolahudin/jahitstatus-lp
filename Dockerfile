@@ -13,6 +13,12 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 # Install dependencies
 RUN pnpm install --frozen-lockfile
 
+# Build-time URL config (Vite inline saat build)
+ARG VITE_APP_URL=https://app.jahitstatus.com
+ARG VITE_LANDING_URL=https://jahitstatus.com
+ENV VITE_APP_URL=$VITE_APP_URL
+ENV VITE_LANDING_URL=$VITE_LANDING_URL
+
 # Copy all files
 COPY . .
 

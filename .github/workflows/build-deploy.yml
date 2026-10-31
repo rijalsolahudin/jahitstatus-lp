@@ -47,6 +47,9 @@ jobs:
           # Ganti ke linux/arm64 kalau server Coolify ARM.
           platforms: linux/amd64
           push: true
+          build-args: |
+            VITE_APP_URL=${{ vars.VITE_APP_URL }}
+            VITE_LANDING_URL=${{ vars.VITE_LANDING_URL }}
           tags: |
             ${{ env.IMAGE_NAME }}:development
             ${{ env.IMAGE_NAME }}:sha-${{ github.sha }}

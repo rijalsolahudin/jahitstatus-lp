@@ -1,3 +1,5 @@
+import { APP_URL } from '../config/env';
+
 type Plan = {
   id: string;
   name: string;
@@ -133,7 +135,7 @@ export function Pricing() {
               </div>
               <div class="p-8 bg-white border-t border-gray-100">
                 <a
-                  href={`https://app.jahitstatus.com/register?plan_id=${plan.planId}`}
+                  href={`${APP_URL}/register?plan_id=${plan.planId}`}
                   class={
                     plan.popular
                       ? 'block w-full py-3.5 px-4 text-center bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold rounded-xl transition-all shadow-md hover:shadow-lg'
