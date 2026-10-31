@@ -56,5 +56,5 @@ jobs:
       - name: Deploy to Coolify
         if: env.COOLIFY_DEPLOY_WEBHOOK != ''
         run: |
-          curl -fsS --request GET "$COOLIFY_DEPLOY_WEBHOOK" \
+          curl --fail-with-body -sS --request GET "$COOLIFY_DEPLOY_WEBHOOK" \
             --header "Authorization: Bearer $COOLIFY_TOKEN"
