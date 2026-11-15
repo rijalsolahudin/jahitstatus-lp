@@ -1,5 +1,13 @@
 name: Build & Deploy
 
+# Branch menentukan GitHub Environment (Settings -> Environments):
+#   development -> env "development" -> image :development
+#   master      -> env "production"  -> image :production
+# Tiap environment punya nama variable & secret yang sama:
+#   vars:    build args (VITE_* / NEXT_PUBLIC_*), DEPLOY_ENABLED
+#   secrets: COOLIFY_DEPLOY_WEBHOOK, COOLIFY_TOKEN
+# Tambah environment baru (mis. staging) cukup buat env + mapping branch di bawah.
+
 on:
   push:
     branches: [development, master]
@@ -11,17 +19,11 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  # development: deploy ke server dev (tag image "development")
-  COOLIFY_DEPLOY_WEBHOOK: ${{ secrets.COOLIFY_DEPLOY_WEBHOOK }}
-  COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
-  # master: opsional, deploy ke server production (tag image "production").
-  # Kosongkan selama belum ada server prod -> step deploy prod otomatis di-skip.
-  COOLIFY_DEPLOY_WEBHOOK_PROD: ${{ secrets.COOLIFY_DEPLOY_WEBHOOK_PROD }}
-  COOLIFY_TOKEN_PROD: ${{ secrets.COOLIFY_TOKEN_PROD }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'master' && 'production' || 'development' }}
     timeout-minutes: 20
     permissions:
       contents: read
@@ -69,14 +71,15 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Deploy to Coolify (development)
-        if: github.ref_name == 'development' && env.COOLIFY_DEPLOY_WEBHOOK != ''
+      - name: Deploy to Coolify
+        if: vars.DEPLOY_ENABLED == 'true'
+        env:
+          COOLIFY_DEPLOY_WEBHOOK: ${{ secrets.COOLIFY_DEPLOY_WEBHOOK }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
         run: |
+          if [ -z "$COOLIFY_DEPLOY_WEBHOOK" ] || [ -z "$COOLIFY_TOKEN" ]; then
+            echo "::warning::Secret COOLIFY_* belum di-set di environment ini, deploy di-skip."
+            exit 0
+          fi
           curl --fail-with-body -sS --request POST "$COOLIFY_DEPLOY_WEBHOOK" \
             --header "Authorization: Bearer $COOLIFY_TOKEN"
-
-      - name: Deploy to Coolify (production)
-        if: github.ref_name == 'master' && env.COOLIFY_DEPLOY_WEBHOOK_PROD != ''
-        run: |
-          curl --fail-with-body -sS --request POST "$COOLIFY_DEPLOY_WEBHOOK_PROD" \
-            --header "Authorization: Bearer $COOLIFY_TOKEN_PROD"
